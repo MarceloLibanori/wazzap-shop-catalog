@@ -3,7 +3,8 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Heart } from 'lucide-react';
+import { MessageCircle, Heart, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
 
 interface Product {
   id: number;
@@ -22,9 +23,14 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
+  const { addItem } = useCart();
   const discount = product.originalPrice 
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
+
+  const handleAddToCart = () => {
+    addItem(product);
+  };
 
   return (
     <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden bg-white border-gray-100 animate-fade-in">
@@ -78,14 +84,26 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
             )}
           </div>
           
-          <Button
-            onClick={() => onWhatsAppClick(product)}
-            disabled={!product.inStock}
-            className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white transition-colors duration-200"
-          >
-            <MessageCircle className="h-4 w-4 mr-2" />
-            {product.inStock ? 'Comprar no WhatsApp' : 'Indisponível'}
-          </Button>
+          <div className="flex space-x-2">
+            <Button
+              onClick={handleAddToCart}
+              disabled={!product.inStock}
+              variant="outline"
+              className="flex-1 border-whatsapp-500 text-whatsapp-600 hover:bg-whatsapp-50"
+            >
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              {product.inStock ? 'Adicionar' : 'Indisponível'}
+            </Button>
+            
+            <Button
+              onClick={() => onWhatsAppClick(product)}
+              disabled={!product.inStock}
+              className="flex-1 bg-whatsapp-500 hover:bg-whatsapp-600 text-white transition-colors duration-200"
+            >
+              <MessageCircle className="h-4 w-4 mr-2" />
+              Comprar
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

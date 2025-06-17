@@ -1,9 +1,10 @@
-
 import React, { useState, useMemo } from 'react';
 import Header from '@/components/Header';
 import ProductCard from '@/components/ProductCard';
 import CategoryFilter from '@/components/CategoryFilter';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Cart from '@/components/Cart';
+import { CartProvider } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { ArrowUp, Sparkles } from 'lucide-react';
 
@@ -141,98 +142,101 @@ Poderia me dar mais informações?`;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      <Header onSearch={setSearchTerm} />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-whatsapp-500 to-blue-600 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center mb-4">
-            <Sparkles className="h-8 w-8 mr-3 animate-pulse" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Catálogo Premium
-            </h2>
-            <Sparkles className="h-8 w-8 ml-3 animate-pulse" />
-          </div>
-          <p className="text-xl md:text-2xl mb-8 text-white/90">
-            Produtos selecionados com qualidade garantida
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="flex items-center text-lg">
-              <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
-              Entrega rápida
+    <CartProvider>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <Header onSearch={setSearchTerm} />
+        
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-whatsapp-500 to-blue-600 text-white py-16">
+          <div className="container mx-auto px-4 text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Sparkles className="h-8 w-8 mr-3 animate-pulse" />
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Catálogo Premium
+              </h2>
+              <Sparkles className="h-8 w-8 ml-3 animate-pulse" />
             </div>
-            <div className="flex items-center text-lg">
-              <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
-              Melhor preço
-            </div>
-            <div className="flex items-center text-lg">
-              <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
-              Atendimento no WhatsApp
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="container mx-auto px-4 py-8">
-        {/* Category Filter */}
-        <CategoryFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          productCounts={productCounts}
-        />
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onWhatsAppClick={handleWhatsAppOrder}
-            />
-          ))}
-        </div>
-
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">
-              Nenhum produto encontrado
-            </h3>
-            <p className="text-gray-500">
-              Tente ajustar os filtros ou termos de busca
+            <p className="text-xl md:text-2xl mb-8 text-white/90">
+              Produtos selecionados com qualidade garantida
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex items-center text-lg">
+                <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
+                Entrega rápida
+              </div>
+              <div className="flex items-center text-lg">
+                <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
+                Melhor preço
+              </div>
+              <div className="flex items-center text-lg">
+                <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
+                Atendimento no WhatsApp
+              </div>
+            </div>
           </div>
-        )}
+        </section>
 
-        {/* Scroll to top button */}
-        <Button
-          onClick={scrollToTop}
-          className="fixed bottom-24 right-6 h-12 w-12 rounded-full bg-blue-500 hover:bg-blue-600 shadow-lg z-40"
-          size="icon"
-        >
-          <ArrowUp className="h-5 w-5 text-white" />
-        </Button>
-      </div>
+        <div className="container mx-auto px-4 py-8">
+          {/* Category Filter */}
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            productCounts={productCounts}
+          />
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-16">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-xl font-semibold mb-2">MeuCatálogo</h3>
-          <p className="text-gray-400 mb-4">
-            Produtos de qualidade com atendimento personalizado no WhatsApp
-          </p>
-          <div className="flex justify-center space-x-6 text-sm text-gray-400">
-            <span>📞 (11) 99999-9999</span>
-            <span>📧 contato@meucatalogo.com</span>
-            <span>🕐 Seg-Sex 9h às 18h</span>
+          {/* Products Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onWhatsAppClick={handleWhatsAppOrder}
+              />
+            ))}
           </div>
+
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-12">
+              <div className="text-gray-400 text-6xl mb-4">🔍</div>
+              <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                Nenhum produto encontrado
+              </h3>
+              <p className="text-gray-500">
+                Tente ajustar os filtros ou termos de busca
+              </p>
+            </div>
+          )}
+
+          {/* Scroll to top button */}
+          <Button
+            onClick={scrollToTop}
+            className="fixed bottom-24 right-6 h-12 w-12 rounded-full bg-blue-500 hover:bg-blue-600 shadow-lg z-40"
+            size="icon"
+          >
+            <ArrowUp className="h-5 w-5 text-white" />
+          </Button>
         </div>
-      </footer>
 
-      <WhatsAppButton />
-    </div>
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-8 mt-16">
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-xl font-semibold mb-2">MeuCatálogo</h3>
+            <p className="text-gray-400 mb-4">
+              Produtos de qualidade com atendimento personalizado no WhatsApp
+            </p>
+            <div className="flex justify-center space-x-6 text-sm text-gray-400">
+              <span>📞 (11) 99999-9999</span>
+              <span>📧 contato@meucatalogo.com</span>
+              <span>🕐 Seg-Sex 9h às 18h</span>
+            </div>
+          </div>
+        </footer>
+
+        <WhatsAppButton />
+        <Cart />
+      </div>
+    </CartProvider>
   );
 };
 
