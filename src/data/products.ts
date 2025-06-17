@@ -13,10 +13,10 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    name: "Smartphone Galaxy Pro",
-    price: 899.99,
-    originalPrice: 1199.99,
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
+    name: "Tule Devore Animal Print",
+    price: 60.00,
+   // originalPrice: 1199.99,
+    image: "/public/image/tuledevorepretocomnude.jpg",
     category: "Eletrônicos",
     description: "Smartphone com câmera de 108MP e bateria de longa duração",
     inStock: true
