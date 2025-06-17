@@ -16,7 +16,7 @@ export const products: Product[] = [
     name: "Tule Devore Animal Print",
     price: 60.00,
    // originalPrice: 1199.99,
-      image: "https://imgur.com/a/VHe3ZdR",
+    image: "https://imgur.com/a/VHe3ZdR",
     category: "Tule",
     description: "Smartphone com câmera de 108MP e bateria de longa duração",
     inStock: true
