@@ -23,7 +23,7 @@ const Cart = () => {
     message += `💰 *Total: R$ ${getTotalPrice().toFixed(2).replace('.', ',')}*\n\n`;
     message += "Gostaria de finalizar este pedido!";
 
-    const phoneNumber = "5511999999999";
+    const phoneNumber = "5511947537240";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
