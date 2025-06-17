@@ -10,7 +10,7 @@ const Footer = () => {
           Produtos de qualidade com atendimento personalizado no WhatsApp
         </p>
         <div className="flex justify-center space-x-6 text-sm text-gray-400">
-          <span>📞 (11) 99999-9999</span>
+          <span>📞 (11) 94753-7240</span>
           <span>📧 contato@meucatalogo.com</span>
           <span>🕐 Seg-Sex 9h às 18h</span>
         </div>
