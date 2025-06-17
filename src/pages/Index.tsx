@@ -44,7 +44,7 @@ ${product.description}
 
 Poderia me dar mais informações?`;
     
-    const phoneNumber = "5511999999999"; // Substitua pelo número real
+    const phoneNumber = "5511947537240"; // Substitua pelo número real
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
