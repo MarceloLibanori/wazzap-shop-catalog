@@ -13,30 +13,29 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    name: "Tule Devore Animal Print",
+    name: "Tule Devore Animal Print Preto c/Nude Tamanho P",
     price: 60.00,
     image: "/images/tuledevorepretocomnude.jpg",
     category: "Tule",
-    description: "Tule de alta qualidade com estampa animal print",
+    description: "Tamanho P",
     inStock: true
   },
   {
     id: 2,
-    name: "Tênis Running Sport",
-    price: 159.90,
-    originalPrice: 199.90,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop",
-    category: "Esportes",
-    description: "Tênis confortável para corrida e caminhada",
+    name: "Tule Devore Animal Print Preto c/Nude Tamanho M",
+    price: 60.00,
+    image: "/images/tuledevorepretocomnude.jpg",
+    category: "Tule",
+    description: "Tamanho M",
     inStock: true
   },
   {
     id: 3,
-    name: "Fone Bluetooth Premium",
-    price: 299.99,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
-    category: "Eletrônicos",
-    description: "Fone com cancelamento de ruído e qualidade Hi-Fi",
+    name: "Tule Devore Animal Print Preto c/Nude Tamanho G",
+    price: 60.00,
+    image: "/images/tuledevorepretocomnude.jpg",
+    category: "Tule",
+    description: "Tamanho G",
     inStock: true
   },
   {
