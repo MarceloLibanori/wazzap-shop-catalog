@@ -167,4 +167,16 @@ export const products: Product[] = [
     description: "Tamanho U",
     inStock: true
   },
+  {
+    id: 12,
+    name: "Colete Metalizado Preto c/ Prata Tamanho U",
+    price: 120.00,
+    images: [
+      "/images/coletemetalizado/coletepretocomprata.jpg",
+       "/images/coletemetalizado/coletepretocomprata1.jpg",
+    ],
+    category: "Colete Metalizado",
+    description: "Tamanho U",
+    inStock: true
+  },
 ];
