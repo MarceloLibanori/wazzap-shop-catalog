@@ -300,7 +300,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 21,
+    id: 25,
     name: "Top Verão 3018 Lima Tamanho G",
     price: 45.00,
     images: [
@@ -312,7 +312,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 22,
+    id: 26,
     name: "Top Verão 3018 Lima Tamanho GG",
     price: 45.00,
     images: [
