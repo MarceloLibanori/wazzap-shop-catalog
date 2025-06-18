@@ -125,7 +125,7 @@ export const products: Product[] = [
     price: 120.00,
     images: [
       "/images/coletemetalizado/cobre.jpg",
-      "/images/tule/tuledevorepretocomnude2.jpg",
+      "/images/coletemetalizado/cobre1.jpg",
     ],
     category: "Colete Metalizado",
     description: "Tamanho U",
