@@ -52,7 +52,7 @@ export const products: Product[] = [
     name: "Tule Devore Animal Print Preto Tamanho M",
     price: 60.00,
     images: [
-       "/images/tule/tulepreto.jpg",
+      "/images/tule/tulepreto.jpg",
       "/images/tule/tulepreto1.jpg",
     ],
     category: "Tule",
@@ -64,7 +64,7 @@ export const products: Product[] = [
     name: "Tule Devore Animal Print Preto Tamanho G",
     price: 60.00,
     images: [
-       "/images/tule/tulepreto.jpg",
+      "/images/tule/tulepreto.jpg",
       "/images/tule/tulepreto1.jpg",
     ],
     category: "Tule",
@@ -76,7 +76,7 @@ export const products: Product[] = [
     name: "Tule Devore Animal Print Bordo Tamanho P",
     price: 60.00,
     images: [
-       "/images/tule/tulebordo.jpg",
+      "/images/tule/tulebordo.jpg",
       "/images/tule/tulebordo1.jpg",
     ],
     category: "Tule",
@@ -88,7 +88,7 @@ export const products: Product[] = [
     name: "Tule Devore Animal Print Bordo Tamanho M",
     price: 60.00,
     images: [
-       "/images/tule/tulebordo.jpg",
+      "/images/tule/tulebordo.jpg",
       "/images/tule/tulebordo1.jpg",
     ],
     category: "Tule",
@@ -100,7 +100,7 @@ export const products: Product[] = [
     name: "Tule Devore Animal Print Bordo Tamanho G",
     price: 60.00,
     images: [
-       "/images/tule/tulebordo.jpg",
+      "/images/tule/tulebordo.jpg",
       "/images/tule/tulebordo1.jpg",
     ],
     category: "Tule",
@@ -137,7 +137,7 @@ export const products: Product[] = [
     price: 120.00,
     images: [
       "/images/coletemetalizado/marrom.jpg",
-       "/images/coletemetalizado/marrom1.jpg",
+      "/images/coletemetalizado/marrom1.jpg",
     ],
     category: "Colete Metalizado",
     description: "Tamanho U",
@@ -149,7 +149,7 @@ export const products: Product[] = [
     price: 120.00,
     images: [
       "/images/coletemetalizado/dourado.jpg",
-       "/images/coletemetalizado/dourado1.jpg",
+      "/images/coletemetalizado/dourado1.jpg",
     ],
     category: "Colete Metalizado",
     description: "Tamanho U",
@@ -161,7 +161,7 @@ export const products: Product[] = [
     price: 120.00,
     images: [
       "/images/coletemetalizado/coletepreto.jpg",
-       "/images/coletemetalizado/coletepreto1.jpg",
+      "/images/coletemetalizado/coletepreto1.jpg",
     ],
     category: "Colete Metalizado",
     description: "Tamanho U",
@@ -173,7 +173,7 @@ export const products: Product[] = [
     price: 120.00,
     images: [
       "/images/coletemetalizado/coletepretocomprata.jpg",
-       "/images/coletemetalizado/coletepretocomprata1.jpg",
+      "/images/coletemetalizado/coletepretocomprata1.jpg",
     ],
     category: "Colete Metalizado",
     description: "Tamanho U",
@@ -184,8 +184,8 @@ export const products: Product[] = [
     name: "Top Verão 3018 Preto Tamanho P",
     price: 45.00,
     images: [
+      "/images/top/toppreto30181.jpg",
       "/images/top/toppreto3018.jpg",
-       "/images/top/toppreto30181.jpg",
     ],
     category: "Top 3018",
     description: "Tamanho P",
@@ -196,8 +196,8 @@ export const products: Product[] = [
     name: "Top Verão 3018 Preto Tamanho M",
     price: 45.00,
     images: [
+      "/images/top/toppreto30181.jpg",
       "/images/top/toppreto3018.jpg",
-       "/images/top/toppreto30181.jpg",
     ],
     category: "Top 3018",
     description: "Tamanho M",
@@ -208,8 +208,8 @@ export const products: Product[] = [
     name: "Top Verão 3018 Preto Tamanho G",
     price: 45.00,
     images: [
+      "/images/top/toppreto30181.jpg",
       "/images/top/toppreto3018.jpg",
-       "/images/top/toppreto30181.jpg",
     ],
     category: "Top 3018",
     description: "Tamanho G",
@@ -220,8 +220,8 @@ export const products: Product[] = [
     name: "Top Verão 3018 Preto Tamanho GG",
     price: 45.00,
     images: [
+      "/images/top/toppreto30181.jpg",
       "/images/top/toppreto3018.jpg",
-       "/images/top/toppreto30181.jpg",
     ],
     category: "Top 3018",
     description: "Tamanho GG",
