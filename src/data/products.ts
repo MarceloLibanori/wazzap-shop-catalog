@@ -96,7 +96,7 @@ export const products: Product[] = [
     id: 10,
     name: "Colete Metalizado Cobre Tamanho U",
     price: 120.00,
-    image: "/images/coletemetalizado/bordo.jpg",
+    image: "/images/coletemetalizado/cobre.jpg",
     category: "Colete Metalizado",
     description: "Tamanho U",
     inStock: true
