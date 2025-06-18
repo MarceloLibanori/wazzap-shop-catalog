@@ -28,12 +28,9 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
     : 0;
 
   const [mainImage, setMainImage] = useState(product.images[0]);
-  const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    if (quantity > 0) {
-      addItem(product, quantity); // Certifique-se que seu addItem aceite quantidade!
-    }
+    addItem(product);
   };
 
   return (
@@ -58,6 +55,7 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
         )}
       </div>
 
+      {/* Miniaturas */}
       <div className="flex space-x-2 mt-2 px-4">
         {product.images.map((img, i) => (
           <img
@@ -97,22 +95,7 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
             )}
           </div>
 
-          {/* Campo de Quantidade */}
-          <div className="flex items-center space-x-2">
-            <label htmlFor="quantity" className="text-sm text-gray-700">
-              Quantidade:
-            </label>
-            <input
-              id="quantity"
-              type="number"
-              min={1}
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-16 px-2 py-1 border rounded text-center"
-            />
-          </div>
-
-          <div className="flex space-x-2 mt-2">
+          <div className="flex space-x-2">
             <Button
               onClick={handleAddToCart}
               disabled={!product.inStock}
