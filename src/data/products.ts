@@ -131,4 +131,16 @@ export const products: Product[] = [
     description: "Tamanho U",
     inStock: true
   },
+  {
+    id: 10,
+    name: "Colete Metalizado Marrom Tamanho U",
+    price: 120.00,
+    images: [
+      "/images/coletemetalizado/marrom.jpg",
+       "/images/coletemetalizado/marrom1.jpg",
+    ],
+    category: "Colete Metalizado",
+    description: "Tamanho U",
+    inStock: true
+  },
 ];
