@@ -60,19 +60,28 @@ const Cart = () => {
               <div className="space-y-4">
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
-                    <img
-                      src={item.image || '/fallback-image.jpg'} // Fallback image
-                      alt={item.name}
-                      className="w-16 h-16 object-cover rounded-md"
-                      onError={(e) => {
-                        e.currentTarget.src = '/fallback-image.jpg'; // Fallback if image fails to load
-                      }}
-                    />
+                    
+                    {/* Exibe até duas imagens do produto */}
+                    <div className="flex space-x-2">
+                      {item.images?.slice(0, 2).map((url, index) => (
+                        <img
+                          key={index}
+                          src={url || '/fallback-image.jpg'}
+                          alt={`${item.name} - Imagem ${index + 1}`}
+                          className="w-16 h-16 object-cover rounded-md"
+                          onError={(e) => {
+                            e.currentTarget.src = '/fallback-image.jpg';
+                          }}
+                        />
+                      ))}
+                    </div>
+
                     <div className="flex-1">
                       <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
                       <p className="text-whatsapp-600 font-semibold">
                         R$ {item.price.toFixed(2).replace('.', ',')}
                       </p>
+                      
                       <div className="flex items-center space-x-2 mt-2">
                         <Button
                           variant="outline"
@@ -111,7 +120,7 @@ const Cart = () => {
 
           {/* Footer */}
           {items.length > 0 && (
-            <div className="border-t p-4 space-y-4">
+            <div className="border-t p-4 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold">Total:</span>
                 <span className="text-2xl font-bold text-whatsapp-600">
@@ -119,23 +128,21 @@ const Cart = () => {
                 </span>
               </div>
               
-              <div className="space-y-2">
-                <Button
-                  onClick={handleWhatsAppOrder}
-                  className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
-                >
-                  <MessageCircle className="h-4 w-4 mr-2" />
-                  Finalizar Pedido no WhatsApp
-                </Button>
-                
-                <Button
-                  variant="outline"
-                  onClick={clearCart}
-                  className="w-full"
-                >
-                  Limpar Carrinho
-                </Button>
-              </div>
+              <Button
+                onClick={handleWhatsAppOrder}
+                className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
+              >
+                <MessageCircle className="h-4 w-4 mr-2" />
+                Finalizar Pedido no WhatsApp
+              </Button>
+              
+              <Button
+                variant="outline"
+                onClick={clearCart}
+                className="w-full"
+              >
+                Limpar Carrinho
+              </Button>
             </div>
           )}
         </div>
