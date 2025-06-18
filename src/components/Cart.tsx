@@ -16,6 +16,9 @@ const Cart = () => {
     setIsOpen,
   } = useCart();
 
+  // 🔢 Contagem total de unidades no carrinho
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+
   const handleWhatsAppOrder = () => {
     if (items.length === 0) return;
 
@@ -72,7 +75,7 @@ const Cart = () => {
               <h2 className="text-lg font-semibold">Carrinho</h2>
               {items.length > 0 && (
                 <Badge variant="secondary">
-                  {items.length} {items.length === 1 ? 'item' : 'itens'}
+                  {totalItems} {totalItems === 1 ? 'unidade' : 'unidades'}
                 </Badge>
               )}
             </div>
