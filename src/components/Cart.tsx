@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
@@ -62,9 +61,12 @@ const Cart = () => {
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
                     <img
-                      src={item.image}
+                      src={item.image || '/fallback-image.jpg'} // Fallback image
                       alt={item.name}
                       className="w-16 h-16 object-cover rounded-md"
+                      onError={(e) => {
+                        e.currentTarget.src = '/fallback-image.jpg'; // Fallback if image fails to load
+                      }}
                     />
                     <div className="flex-1">
                       <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
