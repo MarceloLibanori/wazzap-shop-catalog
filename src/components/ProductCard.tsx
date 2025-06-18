@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Heart, ShoppingCart } from 'lucide-react';
+import { MessageCircle, ShoppingCart } from 'lucide-react'; // Removido Heart daqui também
 import { useCart } from '@/contexts/CartContext';
 
 interface Product {
@@ -39,11 +39,6 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
           alt={product.name}
           className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-3 right-3">
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0 bg-white/80 hover:bg-white">
-            <Heart className="h-4 w-4" />
-          </Button>
-        </div>
         {discount > 0 && (
           <Badge className="absolute top-3 left-3 bg-orange-500 hover:bg-orange-600">
             -{discount}%
