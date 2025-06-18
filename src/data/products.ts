@@ -132,7 +132,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 10,
+    id: 11,
     name: "Colete Metalizado Marrom Tamanho U",
     price: 120.00,
     images: [
