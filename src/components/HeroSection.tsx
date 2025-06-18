@@ -19,20 +19,41 @@ const HeroSection = () => {
           Produtos selecionados com qualidade garantida<br />
 
           {/* Container do texto com scroll automático */}
-          <div className="overflow-hidden whitespace-nowrap h-8 mt-2">
-            <span 
-              className="text-red-500 font-bold text-lg block"
+          <div className="overflow-hidden whitespace-nowrap h-12 mt-2">
+            <div
               style={{
-                display: 'inline-block',
-                padding: '0 1rem',
-                transform: 'translateX(0)',
+                display: 'inline-flex',
+                gap: '1rem',
+                whiteSpace: 'nowrap',
                 animation: 'scroll 10s linear infinite',
+                fontSize: '1.5rem', // ~text-xl, maior que antes
+                color: 'black',
+                fontWeight: 'bold'
               }}
+              className="flex items-center"
             >
+              {/* Imagem + Texto repetido para loop infinito */}
+              <img 
+                src="/images/icons/desconto-20.png" 
+                alt="20% OFF" 
+                className="h-8 w-auto inline-block align-middle mr-2"
+              />
               No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+
+              <img 
+                src="/images/icons/desconto-20.png" 
+                alt="20% OFF" 
+                className="h-8 w-auto inline-block align-middle mr-2"
+              />
               No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+
+              <img 
+                src="/images/icons/desconto-20.png" 
+                alt="20% OFF"
+                className="h-8 w-auto inline-block align-middle mr-2"
+              />
               No Atacado acima de 3 peças 20% de desconto
-            </span>
+            </div>
           </div>
         </p>
 
@@ -53,6 +74,7 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* Animação de scroll horizontal */}
       <style jsx>{`
         @keyframes scroll {
           0% {
