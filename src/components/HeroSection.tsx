@@ -36,28 +36,28 @@ const HeroSection = () => {
               <img 
                 src="/images/icons/desconto-20.png" 
                 alt="20% OFF" 
-                className="h-8 w-auto inline-block align-middle mr-2"
+                className="h-16 w-auto inline-block align-middle mr-4"
               />
               ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO &nbsp;&nbsp;•&nbsp;&nbsp;
 
               <img 
                 src="/images/icons/desconto-20.png" 
                 alt="20% OFF" 
-                className="h-8 w-auto inline-block align-middle mr-2"
+                className="h-16 w-auto inline-block align-middle mr-4"
               />
               ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO &nbsp;&nbsp;•&nbsp;&nbsp;
 
               <img 
                 src="/images/icons/desconto-20.png" 
                 alt="20% OFF"
-                className="h-8 w-auto inline-block align-middle mr-2"
+                className="h-16 w-auto inline-block align-middle mr-4"
               />
               ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO &nbsp;&nbsp;•&nbsp;&nbsp;
 
               <img 
                 src="/images/icons/desconto-20.png" 
                 alt="20% OFF" 
-                className="h-8 w-auto inline-block align-middle mr-2"
+                className="h-16 w-auto inline-block align-middle mr-4"
               />
               ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO
             </div>
