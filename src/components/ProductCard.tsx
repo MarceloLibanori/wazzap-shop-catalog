@@ -21,6 +21,10 @@ interface ProductCardProps {
   onWhatsAppClick: (product: Product) => void;
 }
 
+const formatPrice = (price: number): string => {
+  return `R$ ${price.toFixed(2).replace('.', ',')}`;
+};
+
 const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
   const { addItem } = useCart();
   const [mainImage, setMainImage] = useState(product.images[0]);
@@ -32,10 +36,7 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
 
   const handleAddToCart = () => {
     if (product.inStock) {
-      // Apenas 1 por vez, repetido 'quantity' vezes
-      for (let i = 0; i < quantity; i++) {
-        addItem(product);
-      }
+      addItem({ ...product, quantity });
     }
   };
 
@@ -43,9 +44,10 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
     <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden bg-white border-gray-100 animate-fade-in">
       <div className="relative overflow-hidden">
         <img
-          src={mainImage}
+          src={mainImage || '/fallback-image.jpg'}
           alt={product.name}
           className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => (e.currentTarget.src = '/fallback-image.jpg')}
         />
         {discount > 0 && (
           <Badge className="absolute top-3 left-3 bg-orange-500 hover:bg-orange-600">
@@ -72,6 +74,7 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
               img === mainImage ? 'border-whatsapp-600' : 'border-transparent'
             }`}
             onClick={() => setMainImage(img)}
+            onError={(e) => (e.currentTarget.src = '/fallback-image.jpg')}
           />
         ))}
       </div>
@@ -90,11 +93,11 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
 
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-bold text-whatsapp-600">
-              R$ {product.price.toFixed(2).replace('.', ',')}
+              {formatPrice(product.price)}
             </span>
             {product.originalPrice && (
               <span className="text-sm text-gray-500 line-through">
-                R$ {product.originalPrice.toFixed(2).replace('.', ',')}
+                {formatPrice(product.originalPrice)}
               </span>
             )}
           </div>
@@ -102,6 +105,8 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
           {/* Contador de quantidade */}
           <div className="flex items-center space-x-2">
             <button
+              type="button"
+              aria-label="Decrementar quantidade"
               onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
               className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"
             >
@@ -109,6 +114,8 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
             </button>
             <span className="w-6 text-center">{quantity}</span>
             <button
+              type="button"
+              aria-label="Incrementar quantidade"
               onClick={() => setQuantity((prev) => prev + 1)}
               className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"
             >
