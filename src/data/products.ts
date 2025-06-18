@@ -402,5 +402,57 @@ export const products: Product[] = [
     sku: "3018",
     inStock: true
   },
+  {
+    id: 31,
+    name: "Top Verão 3018 Chumbo Tamanho: P",
+    price: 45.00,
+    images: [
+      "/images/top/topchumbo3018.jpg",
+      "/images/top/topchumbo30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 32,
+    name: "Top Verão 3018 Chumbo Tamanho: M",
+    price: 45.00,
+    images: [
+      "/images/top/topchumbo3018.jpg",
+      "/images/top/topchumbo30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: M",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 33,
+    name: "Top Verão 3018 Chumbo Tamanho: G",
+    price: 45.00,
+    images: [
+      "/images/top/topchumbo3018.jpg",
+      "/images/top/topchumbo30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: G",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 34,
+    name: "Top Verão 3018 Chumbo Tamanho: GG",
+    price: 45.00,
+    images: [
+      "/images/top/topchumbo3018.jpg",
+      "/images/top/topchumbo30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
+    sku: "3018",
+    inStock: true
+  },
 ];
 
