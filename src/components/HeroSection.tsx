@@ -13,8 +13,8 @@ const HeroSection = () => {
           <Sparkles className="h-8 w-8 ml-3 animate-pulse text-white" />
         </div>
         <p className="text-xl md:text-2xl mb-8 text-white/90">
-          Produtos selecionados com qualidade garantida
-          No Atacado acima de 3 peças 20% de desconto
+          Produtos selecionados com qualidade garantida<br />
+          <span className="text-red-500">No Atacado acima de 3 peças 20% de desconto</span>
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <div className="flex items-center text-lg">
