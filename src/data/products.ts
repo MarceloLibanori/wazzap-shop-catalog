@@ -7,6 +7,7 @@ export interface Product {
   images: string[];
   category: string;
   description: string;
+  sku: string; // Adicionado
   inStock: boolean;
 }
 
@@ -21,6 +22,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: P",
+    sku: "1300", // Adicionado SKU
     inStock: true
   },
   {
@@ -33,6 +35,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: M",
+    sku: "1300",
     inStock: true
   },
   {
@@ -45,6 +48,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: G",
+    sku: "1300",
     inStock: true
   },
   {
@@ -57,6 +61,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: M",
+    sku: "1300",
     inStock: true
   },
   {
@@ -69,6 +74,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: G",
+    sku: "1300",
     inStock: true
   },
   {
@@ -81,6 +87,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: P",
+    sku: "1300",
     inStock: true
   },
   {
@@ -93,6 +100,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: M",
+    sku: "1300",
     inStock: true
   },
   {
@@ -105,6 +113,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: G",
+    sku: "1300",
     inStock: true
   },
   {
@@ -117,6 +126,7 @@ export const products: Product[] = [
     ],
     category: "Colete Metalizado",
     description: "Tamanho: U",
+    sku: "821",
     inStock: true
   },
   {
@@ -129,6 +139,7 @@ export const products: Product[] = [
     ],
     category: "Colete Metalizado",
     description: "Tamanho: U",
+    sku: "821",
     inStock: true
   },
   {
@@ -141,6 +152,7 @@ export const products: Product[] = [
     ],
     category: "Colete Metalizado",
     description: "Tamanho: U",
+    sku: "821",
     inStock: true
   },
   {
@@ -153,6 +165,7 @@ export const products: Product[] = [
     ],
     category: "Colete Metalizado",
     description: "Tamanho: U",
+    sku: "821",
     inStock: true
   },
   {
@@ -165,6 +178,7 @@ export const products: Product[] = [
     ],
     category: "Colete Metalizado",
     description: "Tamanho: U",
+    sku: "821",
     inStock: true
   },
   {
@@ -177,6 +191,7 @@ export const products: Product[] = [
     ],
     category: "Colete Metalizado",
     description: "Tamanho: U",
+    sku: "821",
     inStock: true
   },
   {
@@ -189,6 +204,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: P",
+    sku: "3018",
     inStock: true
   },
   {
@@ -201,6 +217,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: M",
+    sku: "3018",
     inStock: true
   },
   {
@@ -213,6 +230,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: G",
+    sku: "3018",
     inStock: true
   },
   {
@@ -225,6 +243,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: GG",
+    sku: "3018",
     inStock: true
   },
   {
@@ -237,6 +256,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: P",
+    sku: "3018",
     inStock: true
   },
   {
@@ -249,6 +269,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: M",
+    sku: "3018",
     inStock: true
   },
   {
@@ -261,6 +282,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: G",
+    sku: "3018",
     inStock: true
   },
   {
@@ -273,6 +295,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: GG",
+    sku: "3018",
     inStock: true
   },
   {
@@ -285,6 +308,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: M",
+    sku: "3018",
     inStock: true
   },
   {
@@ -297,6 +321,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: G",
+    sku: "3018",
     inStock: true
   },
   {
@@ -309,6 +334,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: P",
+    sku: "3018",
     inStock: true
   },
   {
@@ -321,6 +347,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: M",
+    sku: "3018",
     inStock: true
   },
   {
@@ -333,6 +360,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: G",
+    sku: "3018",
     inStock: true
   },
   {
@@ -345,6 +373,7 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: GG",
+    sku: "3018",
     inStock: true
   },
 ];

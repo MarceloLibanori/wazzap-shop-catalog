@@ -1,3 +1,4 @@
+// src/contexts/CartContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Product } from '@/interfaces/Product';
 
@@ -8,6 +9,7 @@ export interface CartItem {
   images: string[];
   description: string;
   quantity: number;
+  sku: string;
 }
 
 interface CartContextType {
@@ -47,7 +49,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         );
       }
 
-      // Garante que todos os campos sejam copiados corretamente
       return [
         ...prevItems,
         {
@@ -55,8 +56,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           name: product.name,
           price: product.price,
           images: product.images || [],
-          description: product.description || "Descrição não disponível",
-          quantity: 1
+          description: product.description || 'Descrição não disponível',
+          quantity: 1,
+          sku: product.sku || `SKU-${product.id}`, // Gera um SKU padrão se não houver
         },
       ];
     });
@@ -71,6 +73,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       removeItem(id);
       return;
     }
+
     setItems(prevItems =>
       prevItems.map(item =>
         item.id === id ? { ...item, quantity } : item
@@ -104,7 +107,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         getTotalItems,
         getTotalPrice,
         isOpen,
-        setIsOpen
+        setIsOpen,
       }}
     >
       {children}

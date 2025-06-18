@@ -23,6 +23,7 @@ const Cart = () => {
     items.forEach((item, index) => {
       message += `${index + 1}. *${item.name}*\n`;
       message += `   Quantidade: ${item.quantity}\n`;
+      message += `   SKU: ${item.sku}\n`; // Adicionado
       message += `   Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
       message += `   Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n\n`;
     });
