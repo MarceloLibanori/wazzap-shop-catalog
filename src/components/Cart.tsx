@@ -94,6 +94,9 @@ const Cart = () => {
                     {/* Detalhes do produto */}
                     <div className="flex-1">
                       <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
+                      <p className="text-gray-500 text-sm line-clamp-3 mb-2">
+                        {item.description}
+                      </p>
                       <p className="text-whatsapp-600 font-semibold">
                         R$ {item.price.toFixed(2).replace('.', ',')}
                       </p>
