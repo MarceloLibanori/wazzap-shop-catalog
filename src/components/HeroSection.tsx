@@ -23,7 +23,7 @@ const HeroSection = () => {
             <div
               style={{
                 display: 'inline-flex',
-                gap: '0rem',
+                gap: '1rem',
                 whiteSpace: 'nowrap',
                 animation: 'scroll 25s linear infinite', // Mais lento
                 fontSize: '1.9rem', // Tamanho maior
