@@ -19,7 +19,9 @@ interface CartContextType {
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
   getTotalItems: () => number;
+  getTotalQuantity: () => number; // Nova função
   getTotalPrice: () => number;
+  getTotalPriceWithDiscount: () => number; // Nova função com desconto
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }
@@ -58,7 +60,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           images: product.images || [],
           description: product.description || 'Descrição não disponível',
           quantity: 1,
-          sku: product.sku || `SKU-${product.id}`, // Gera um SKU padrão se não houver
+          sku: product.sku || `SKU-${product.id}`,
         },
       ];
     });
@@ -86,6 +88,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getTotalItems = () => {
+    return items.length;
+  };
+
+  const getTotalQuantity = () => {
     return items.reduce((total, item) => total + item.quantity, 0);
   };
 
@@ -94,6 +100,25 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       (total, item) => total + item.price * item.quantity,
       0
     );
+  };
+
+  // ✨ Função para calcular preço com desconto
+  const getTotalPriceWithDiscount = () => {
+    const total = getTotalPrice();
+    
+    // Se houver mais de 3 **itens diferentes**
+    if (items.length > 3) {
+      const discountPercentage = 0.10; // 10% de desconto
+      return total * (1 - discountPercentage);
+    }
+
+    // Ou, se quiser por **quantidade total de unidades**
+    // if (getTotalQuantity() > 3) {
+    //   const discountPercentage = 0.10;
+    //   return total * (1 - discountPercentage);
+    // }
+
+    return total;
   };
 
   return (
@@ -105,7 +130,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         updateQuantity,
         clearCart,
         getTotalItems,
+        getTotalQuantity,
         getTotalPrice,
+        getTotalPriceWithDiscount,
         isOpen,
         setIsOpen,
       }}
