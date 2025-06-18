@@ -1,18 +1,18 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Product } from '@/interfaces/Product';
 
 export interface CartItem {
   id: number;
   name: string;
   price: number;
-  image: string [];
+  images: string[];
   description: string;
   quantity: number;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (product: any) => void;
+  addItem: (product: Product) => void;
   removeItem: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
@@ -36,7 +36,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const addItem = (product: any) => {
+  const addItem = (product: Product) => {
     setItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === product.id);
       if (existingItem) {
@@ -46,13 +46,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             : item
         );
       }
-      return [...prevItems, {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: 1
-      }];
+
+      // Garante que todos os campos sejam copiados corretamente
+      return [
+        ...prevItems,
+        {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          images: product.images || [],
+          description: product.description || "Descrição não disponível",
+          quantity: 1
+        },
+      ];
     });
   };
 
@@ -81,21 +87,26 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return items.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   return (
-    <CartContext.Provider value={{
-      items,
-      addItem,
-      removeItem,
-      updateQuantity,
-      clearCart,
-      getTotalItems,
-      getTotalPrice,
-      isOpen,
-      setIsOpen
-    }}>
+    <CartContext.Provider
+      value={{
+        items,
+        addItem,
+        removeItem,
+        updateQuantity,
+        clearCart,
+        getTotalItems,
+        getTotalPrice,
+        isOpen,
+        setIsOpen
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
