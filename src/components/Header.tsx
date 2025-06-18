@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, Search, ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -17,9 +17,15 @@ const Header = ({ onSearch }: HeaderProps) => {
     <header className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
+          
+          {/* Logo e Título */}
           <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-whatsapp-500 to-blue-500 p-2 rounded-xl">
-              <ShoppingBag className="h-6 w-6 text-white" />
+            <div className="p-2 rounded-xl bg-[#b37c74]/10">
+              <img
+                src="/images/logoleev.jpg"
+                alt="Logo Leev"
+                className="h-10 w-10 rounded-xl object-cover"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-[#b37c74]">
@@ -28,7 +34,8 @@ const Header = ({ onSearch }: HeaderProps) => {
               <p className="text-sm text-[#b37c74]">Produtos de qualidade</p>
             </div>
           </div>
-          
+
+          {/* Busca + Carrinho */}
           <div className="flex items-center space-x-4">
             <div className="relative max-w-md w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#b37c74] h-4 w-4" />
@@ -38,7 +45,7 @@ const Header = ({ onSearch }: HeaderProps) => {
                 onChange={(e) => onSearch(e.target.value)}
               />
             </div>
-            
+
             <Button
               variant="outline"
               size="sm"
@@ -47,8 +54,8 @@ const Header = ({ onSearch }: HeaderProps) => {
             >
               <ShoppingCart className="h-4 w-4" />
               {totalItems > 0 && (
-                <Badge 
-                  variant="destructive" 
+                <Badge
+                  variant="destructive"
                   className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
                 >
                   {totalItems}
@@ -56,6 +63,7 @@ const Header = ({ onSearch }: HeaderProps) => {
               )}
             </Button>
           </div>
+          
         </div>
       </div>
     </header>
