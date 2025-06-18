@@ -15,7 +15,7 @@ export const products: Product[] = [
     id: 1,
     name: "Tule Devore Animal Print Preto c/Nude Tamanho P",
     price: 60.00,
-    image: "/images/tuledevorepretocomnude.jpg",
+    image: "/images/tule/tuledevorepretocomnude.jpg",
     category: "Tule",
     description: "Tamanho P",
     inStock: true
@@ -24,7 +24,7 @@ export const products: Product[] = [
     id: 2,
     name: "Tule Devore Animal Print Preto c/Nude Tamanho M",
     price: 60.00,
-    image: "/images/tuledevorepretocomnude.jpg",
+    image: "/images/tule/tuledevorepretocomnude.jpg",
     category: "Tule",
     description: "Tamanho M",
     inStock: true
@@ -33,7 +33,7 @@ export const products: Product[] = [
     id: 3,
     name: "Tule Devore Animal Print Preto c/Nude Tamanho G",
     price: 60.00,
-    image: "/images/tuledevorepretocomnude.jpg",
+    image: "/images/tule/tuledevorepretocomnude.jpg",
     category: "Tule",
     description: "Tamanho G",
     inStock: true
@@ -51,7 +51,7 @@ export const products: Product[] = [
     id: 5,
     name: "Tule Devore Animal Print Preto Tamanho G",
     price: 60.00,
-    image: "/images/tulepreto.jpg",
+    image: "/images/tule/tulepreto.jpg",
     category: "Tule",
     description: "Tamanho G",
     inStock: true
