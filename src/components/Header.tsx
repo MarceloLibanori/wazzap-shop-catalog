@@ -22,10 +22,10 @@ const Header = ({ onSearch }: HeaderProps) => {
           <div className="flex items-center space-x-3">
             <div className="p-2 rounded-xl bg-[#b37c74]/10">
               <img
-  src="/images/logoleev.jpg"
-  alt="Logo Leev"
-  className="h-10 w-10 rounded-xl object-cover"
-/>
+                src="/images/logoleev.jpg"
+                alt="Logo Leev"
+                className="h-10 w-10 rounded-xl object-cover"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-[#b37c74]">
