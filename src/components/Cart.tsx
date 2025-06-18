@@ -109,9 +109,24 @@ const Cart = () => {
                       <p className="text-gray-500 text-sm line-clamp-3 mb-2">
                         {item.description}
                       </p>
-                      <p className="text-whatsapp-600 font-semibold">
-                        R$ {item.price.toFixed(2).replace('.', ',')}
-                      </p>
+
+                      {/* Exibir preço com e sem desconto */}
+                      <div className="mt-1">
+                        {temDesconto ? (
+                          <div>
+                            <span className="text-gray-500 line-through text-xs">
+                              R$ {item.price.toFixed(2).replace('.', ',')}
+                            </span>{' '}
+                            <span className="text-whatsapp-600 font-semibold">
+                              R$ {(item.price * 0.8).toFixed(2).replace('.', ',')}
+                            </span>
+                          </div>
+                        ) : (
+                          <span className="text-whatsapp-600 font-semibold">
+                            R$ {item.price.toFixed(2).replace('.', ',')}
+                          </span>
+                        )}
+                      </div>
 
                       <div className="flex items-center space-x-2 mt-2">
                         <Button
@@ -166,20 +181,21 @@ const Cart = () => {
                 </span>
               </div>
 
-              {/* Mensagem de desconto */}
+              {/* Detalhes do desconto */}
               {temDesconto && (
-                <div className="text-green-600 text-sm">
-                  🎉 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.
-                </div>
+                <>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Subtotal:</span>
+                    <span>R$ {totalOriginal.toFixed(2).replace('.', ',')}</span>
+                  </div>
+                  <div className="flex justify-between text-green-600 font-medium">
+                    <span>Com desconto (20%):</span>
+                    <span>R$ {totalComDesconto.toFixed(2).replace('.', ',')}</span>
+                  </div>
+                </>
               )}
 
-              {/* Valores detalhados */}
-              {temDesconto && (
-                <div className="text-right text-sm text-gray-500">
-                  <span className="line-through">R$ {totalOriginal.toFixed(2).replace('.', ',')}</span>
-                </div>
-              )}
-
+              {/* Botão WhatsApp */}
               <Button
                 onClick={handleWhatsAppOrder}
                 className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
