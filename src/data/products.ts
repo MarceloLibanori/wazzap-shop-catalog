@@ -144,7 +144,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 11,
+    id: 12,
     name: "Colete Metalizado Dourado Tamanho U",
     price: 120.00,
     images: [
@@ -156,7 +156,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 12,
+    id: 13,
     name: "Colete Metalizado Preto Tamanho U",
     price: 120.00,
     images: [
@@ -168,7 +168,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 13,
+    id: 14,
     name: "Colete Metalizado Preto c/ Prata Tamanho U",
     price: 120.00,
     images: [
@@ -180,7 +180,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 14,
+    id: 15,
     name: "Top Verão 3018 Preto Tamanho P",
     price: 45.00,
     images: [
@@ -192,7 +192,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 15,
+    id: 16,
     name: "Top Verão 3018 Preto Tamanho M",
     price: 45.00,
     images: [
@@ -204,7 +204,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 16,
+    id: 17,
     name: "Top Verão 3018 Preto Tamanho G",
     price: 45.00,
     images: [
@@ -216,7 +216,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 17,
+    id: 18,
     name: "Top Verão 3018 Preto Tamanho GG",
     price: 45.00,
     images: [
