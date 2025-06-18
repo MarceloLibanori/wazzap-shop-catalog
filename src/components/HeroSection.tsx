@@ -5,6 +5,7 @@ const HeroSection = () => {
   return (
     <section className="bg-[#b37c74] text-white py-16">
       <div className="container mx-auto px-4 text-center">
+        {/* Título com sparkles */}
         <div className="flex items-center justify-center mb-4">
           <Sparkles className="h-8 w-8 mr-3 animate-pulse text-white" />
           <h2 className="text-4xl md:text-5xl font-bold">
@@ -12,12 +13,30 @@ const HeroSection = () => {
           </h2>
           <Sparkles className="h-8 w-8 ml-3 animate-pulse text-white" />
         </div>
+
+        {/* Subtítulo com texto rolável */}
         <p className="text-xl md:text-2xl mb-8 text-white/90">
           Produtos selecionados com qualidade garantida<br />
-          <span className="text-red-500 font-bold drop-shadow-[0_0_1px_rgba(0,0,0,0.8)]">
-            No Atacado acima de 3 peças 20% de desconto
-          </span>
+
+          {/* Container do texto com scroll automático */}
+          <div className="overflow-hidden whitespace-nowrap h-8 mt-2">
+            <span 
+              className="text-red-500 font-bold text-lg block"
+              style={{
+                display: 'inline-block',
+                padding: '0 1rem',
+                transform: 'translateX(0)',
+                animation: 'scroll 10s linear infinite',
+              }}
+            >
+              No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+              No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+              No Atacado acima de 3 peças 20% de desconto
+            </span>
+          </div>
         </p>
+
+        {/* Benefícios */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <div className="flex items-center text-lg">
             <span className="bg-white/20 rounded-full p-2 mr-3">✓</span>
@@ -33,6 +52,17 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
     </section>
   );
 };
