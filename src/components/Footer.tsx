@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-8 mt-16">
       <div className="container mx-auto px-4 text-center">
-        <h3 className="text-xl font-semibold mb-2">MeuCatálogo</h3>
+        <h3 className="text-xl font-semibold mb-2">Leev Store Catálogo</h3>
         <p className="text-gray-400 mb-4">
           Produtos de qualidade com atendimento personalizado no WhatsApp
         </p>

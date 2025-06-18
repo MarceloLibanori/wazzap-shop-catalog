@@ -24,7 +24,7 @@ const Header = ({ onSearch }: HeaderProps) => {
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-whatsapp-600 to-blue-600 bg-clip-text text-transparent">
-                MeuCatálogo
+                Leev store Catálogo
               </h1>
               <p className="text-sm text-gray-600">Produtos de qualidade</p>
             </div>
