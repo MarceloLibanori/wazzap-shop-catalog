@@ -277,18 +277,6 @@ export const products: Product[] = [
   },
   {
     id: 23,
-    name: "Top Verão 3018 Lima Tamanho P",
-    price: 45.00,
-    images: [
-      "/images/top/toplima3018.jpg",
-      "/images/top/toplima30181.jpg",
-    ],
-    category: "Top 3018",
-    description: "Tamanho P",
-    inStock: true
-  },
-  {
-    id: 24,
     name: "Top Verão 3018 Lima Tamanho M",
     price: 45.00,
     images: [
@@ -300,7 +288,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 25,
+    id: 24,
     name: "Top Verão 3018 Lima Tamanho G",
     price: 45.00,
     images: [
@@ -312,15 +300,52 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 26,
-    name: "Top Verão 3018 Lima Tamanho GG",
+    id: 25,
+    name: "Top Verão 3018 Verde Militar Tamanho P",
     price: 45.00,
     images: [
-      "/images/top/toplima3018.jpg",
-      "/images/top/toplima30181.jpg",
+      "/images/top/topvmilitar3018.jpg",
+      "/images/top/topvmilitar30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho P",
+    inStock: true
+  },
+  {
+    id: 26,
+    name: "Top Verão 3018 Verde Militar Tamanho M",
+    price: 45.00,
+    images: [
+      "/images/top/topvmilitar3018.jpg",
+      "/images/top/topvmilitar30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho M",
+    inStock: true
+  },
+  {
+    id: 27,
+    name: "Top Verão 3018 Verde Militar Tamanho G",
+    price: 45.00,
+    images: [
+      "/images/top/topvmilitar3018.jpg",
+      "/images/top/topvmilitar30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho G",
+    inStock: true
+  },
+  {
+    id: 28,
+    name: "Top Verão 3018 Verde Militar Tamanho GG",
+    price: 45.00,
+    images: [
+      "/images/top/topvmilitar3018.jpg",
+      "/images/top/topvmilitar30181.jpg",
     ],
     category: "Top 3018",
     description: "Tamanho GG",
     inStock: true
   },
 ];
+
