@@ -53,7 +53,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulepreto.jpg",
-      "/images/tule/tulepreto2.jpg",
+      "/images/tule/tulepreto1.jpg",
     ],
     category: "Tule",
     description: "Tamanho M",
@@ -65,7 +65,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulepreto.jpg",
-      "/images/tule/tulepreto2.jpg",
+      "/images/tule/tulepreto1.jpg",
     ],
     category: "Tule",
     description: "Tamanho G",
