@@ -102,9 +102,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // ✅ Desconto aplicado por unidade (20%)
+  // ✅ Desconto aplicado por unidade do item, se tiver pelo menos 3 unidades no total
   const getTotalPriceWithDiscount = () => {
-    if (items.length <= 3) return getTotalPrice();
+    const totalQuantity = getTotalQuantity(); // Total de unidades no carrinho
+
+    if (totalQuantity < 3) return getTotalPrice();
 
     return items.reduce(
       (total, item) => total + item.price * 0.8 * item.quantity,
