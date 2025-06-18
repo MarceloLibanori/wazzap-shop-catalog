@@ -143,4 +143,16 @@ export const products: Product[] = [
     description: "Tamanho U",
     inStock: true
   },
+  {
+    id: 11,
+    name: "Colete Metalizado Dourado Tamanho U",
+    price: 120.00,
+    images: [
+      "/images/coletemetalizado/dourado.jpg",
+       "/images/coletemetalizado/dourado1.jpg",
+    ],
+    category: "Colete Metalizado",
+    description: "Tamanho U",
+    inStock: true
+  },
 ];
