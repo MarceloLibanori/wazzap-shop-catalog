@@ -32,7 +32,7 @@ const Cart = () => {
 
     const totalPrice = getTotalPrice();
     const totalPriceWithDiscount = getTotalPriceWithDiscount();
-    const hasDiscount = items.length > 3; // ou getQuantidadeTotal() > 3
+    const hasDiscount = items.length > 3;
 
     message += `💰 *Total sem desconto: R$ ${totalPrice.toFixed(2).replace('.', ',')}*\n`;
 
@@ -51,7 +51,7 @@ const Cart = () => {
 
   const totalOriginal = getTotalPrice();
   const totalComDesconto = getTotalPriceWithDiscount();
-  const temDesconto = items.length > 3; // ou getTotalQuantity() > 3
+  const temDesconto = items.length > 3;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
@@ -82,7 +82,7 @@ const Cart = () => {
           <div className="flex-1 overflow-y-auto p-4">
             {items.length === 0 ? (
               <div className="text-center py-8">
-                <ShoppingCart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+                <ShoppingCart className="h-12 w-12 mx-auto mb-4 text-gray-300" />
                 <p className="text-gray-500">Seu carrinho está vazio</p>
               </div>
             ) : (
@@ -149,6 +149,13 @@ const Cart = () => {
               {temDesconto && (
                 <div className="text-green-600 text-sm">
                   Parabéns! Você ganhou 10% de desconto por comprar mais de 3 produtos.
+                </div>
+              )}
+
+              {/* Valores detalhados (opcional) */}
+              {temDesconto && (
+                <div className="text-right text-sm text-gray-500">
+                  <span className="line-through">R$ {totalOriginal.toFixed(2).replace('.', ',')}</span>
                 </div>
               )}
 

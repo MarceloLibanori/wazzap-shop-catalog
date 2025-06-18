@@ -19,9 +19,9 @@ interface CartContextType {
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
   getTotalItems: () => number;
-  getTotalQuantity: () => number; // Nova função
+  getTotalQuantity: () => number;
   getTotalPrice: () => number;
-  getTotalPriceWithDiscount: () => number; // Nova função com desconto
+  getTotalPriceWithDiscount: () => number;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }
@@ -102,23 +102,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // ✨ Função para calcular preço com desconto
+  // ✨ Função atualizada com desconto de 30%
   const getTotalPriceWithDiscount = () => {
     const total = getTotalPrice();
-    
-    // Se houver mais de 3 **itens diferentes**
-    if (items.length > 3) {
-      const discountPercentage = 0.10; // 10% de desconto
-      return total * (1 - discountPercentage);
-    }
+    const discountPercentage = items.length > 3 ? 0.30 : 0; // 30% se mais de 3 itens únicos
 
-    // Ou, se quiser por **quantidade total de unidades**
-    // if (getTotalQuantity() > 3) {
-    //   const discountPercentage = 0.10;
-    //   return total * (1 - discountPercentage);
-    // }
-
-    return total;
+    return total * (1 - discountPercentage);
   };
 
   return (
