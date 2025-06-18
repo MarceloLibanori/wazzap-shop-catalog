@@ -18,34 +18,37 @@ const Cart = () => {
   } = useCart();
 
   const handleWhatsAppOrder = () => {
-    if (items.length === 0) return;
+  if (items.length === 0) return;
 
-    let message = "🛒 *Meu Pedido:*\n\n";
+  let message = "🛒 *Meu Pedido:*\n\n";
 
-    items.forEach((item, index) => {
-      message += `${index + 1}. *${item.name}*\n`;
-      message += `   SKU: ${item.sku}\n`;
-      message += `   Quantidade: ${item.quantity}\n`;
-      message += `   Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
-      message += `   Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n\n`;
-    });
+  items.forEach((item, index) => {
+    message += `*${index + 1}. ${item.name}*\n`;
+    message += `SKU: ${item.sku}\n`;
+    message += `Quantidade: ${item.quantity}\n`;
+    message += `Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+    message += `Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+    message += "──────────────────────\n";
+  });
 
-    const totalPrice = getTotalPrice();
-    const totalPriceWithDiscount = getTotalPriceWithDiscount();
-    const hasDiscount = items.length > 3;
+  const totalPrice = getTotalPrice();
+  const totalPriceWithDiscount = getTotalPriceWithDiscount();
+  const hasDiscount = items.length > 3;
 
-    message += `💰 *Total sem desconto: R$ ${totalPrice.toFixed(2).replace('.', ',')}*\n`;
+  message += `\n💰 *Total sem desconto:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n`;
 
-    if (hasDiscount) {
-      message += `🎉 *Com desconto (20%): R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}*\n`;
-    }
+  if (hasDiscount) {
+    message += `🎉 *Com desconto (20%):* R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}\n`;
+    message += "__________________________\n";
+    message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.\n";
+  }
 
-    message += "\nGostaria de finalizar este pedido!";
+  message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    const phoneNumber = "5511947537240";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  };
+  const phoneNumber = "5511947537240"; // substitua pelo número correto
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
 
   if (!isOpen) return null;
 
