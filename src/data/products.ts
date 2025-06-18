@@ -505,6 +505,57 @@ export const products: Product[] = [
     description: "Tamanho: GG",
     sku: "3018",
     inStock: true
+  },{
+    id: 39,
+    name: "Top Verão 3018 Pink Tamanho: P",
+    price: 45.00,
+    images: [
+      "/images/top/toppink3018.jpg",
+      "/images/top/toppink30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 40,
+    name: "Top Verão 3018 Pink Tamanho: M",
+    price: 45.00,
+    images: [
+      "/images/top/toppink3018.jpg",
+      "/images/top/toppink30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: M",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 41,
+    name: "Top Verão 3018 Pink Tamanho: G",
+    price: 45.00,
+    images: [
+      "/images/top/toppink3018.jpg",
+      "/images/top/toppink30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: G",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 42,
+    name: "Top Verão 3018 Pink Tamanho: GG",
+    price: 45.00,
+    images: [
+      "/images/top/toppink3018.jpg",
+      "/images/top/toppink30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
+    sku: "3018",
+    inStock: true
   },
 ];
 
