@@ -42,7 +42,7 @@ export const products: Product[] = [
     id: 4,
     name: "Tule Devore Animal Print Preto Tamanho M",
     price: 60.00,
-    image: "/images/tulepreto.jpg",
+    image: "/images/tule/tulepreto.jpg",
     category: "Tule",
     description: "Tamanho M",
     inStock: true
