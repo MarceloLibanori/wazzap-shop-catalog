@@ -376,5 +376,31 @@ export const products: Product[] = [
     sku: "3018",
     inStock: true
   },
+  {
+    id: 29,
+    name: "Top Verão 3018 Tiffany Tamanho: M",
+    price: 45.00,
+    images: [
+      "/images/top/toptiffany3018.jpg",
+      "/images/top/toptiffany30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: M",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 30,
+    name: "Top Verão 3018 Tiffany Tamanho: G",
+    price: 45.00,
+    images: [
+      "/images/top/toptiffany3018.jpg",
+      "/images/top/toptiffany30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: G",
+    sku: "3018",
+    inStock: true
+  },
 ];
 
