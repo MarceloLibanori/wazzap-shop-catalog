@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
 
 const HeroSection = () => {
+  const [isScrollVisible, setIsScrollVisible] = React.useState(false);
+
+  useEffect(() => {
+    // Mostrar o scroll após 500ms (ajuste conforme necessário)
+    setTimeout(() => {
+      setIsScrollVisible(true);
+    }, 500);
+  }, []);
+
   return (
     <section className="bg-[#b37c74] text-white py-16">
       <div className="container mx-auto px-4 text-center">
@@ -19,7 +28,7 @@ const HeroSection = () => {
           Produtos selecionados com qualidade garantida<br />
 
           {/* Container do texto com scroll automático */}
-          <div className="overflow-hidden whitespace-nowrap h-12 mt-2 w-full">
+          <div className={`overflow-hidden whitespace-nowrap h-12 mt-2 w-full ${isScrollVisible ? '' : 'hidden'}`}>
             <div
               style={{
                 display: 'inline-flex',
