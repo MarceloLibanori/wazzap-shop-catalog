@@ -14,7 +14,7 @@ const HeroSection = () => {
         </div>
         <p className="text-xl md:text-2xl mb-8 text-white/90">
           Produtos selecionados com qualidade garantida<br />
-          <span className="text-red-500 font-bold">
+          <span className="text-red-500 font-bold drop-shadow-[0_0_1px_rgba(0,0,0,0.8)]">
             No Atacado acima de 3 peças 20% de desconto
           </span>
         </p>
