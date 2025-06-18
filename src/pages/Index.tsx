@@ -12,10 +12,14 @@ import { CartProvider } from '@/contexts/CartContext';
 import { products, Product } from '@/data/products';
 
 const Index = () => {
+  console.log('Index component rendering...');
+  console.log('Products loaded:', products.length);
+  
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
   const categories = Array.from(new Set(products.map(product => product.category)));
+  console.log('Categories:', categories);
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
@@ -25,6 +29,8 @@ const Index = () => {
       return matchesCategory && matchesSearch;
     });
   }, [selectedCategory, searchTerm]);
+
+  console.log('Filtered products:', filteredProducts.length);
 
   const productCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -44,7 +50,7 @@ ${product.description}
 
 Poderia me dar mais informações?`;
     
-    const phoneNumber = "5511947537240"; // Substitua pelo número real
+    const phoneNumber = "5511947537240";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
