@@ -22,8 +22,8 @@ const Cart = () => {
 
     items.forEach((item, index) => {
       message += `${index + 1}. *${item.name}*\n`;
+      message += `   SKU: ${item.sku}\n`; // ✅ Agora funciona
       message += `   Quantidade: ${item.quantity}\n`;
-      message += `   SKU: ${item.sku}\n`; // Adicionado
       message += `   Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
       message += `   Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n\n`;
     });
@@ -80,6 +80,7 @@ const Cart = () => {
                     {/* Detalhes do produto */}
                     <div>
                       <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
+                      <p className="text-xs text-gray-500 mb-1">SKU: {item.sku}</p> {/* ✅ Exibe o SKU */}
                       <p className="text-gray-500 text-sm line-clamp-3 mb-2">
                         {item.description}
                       </p>
