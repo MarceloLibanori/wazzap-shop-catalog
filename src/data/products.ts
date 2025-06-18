@@ -4,7 +4,7 @@ export interface Product {
   name: string;
   price: number;
   originalPrice?: number;
-  image: string;
+  images: string[];
   category: string;
   description: string;
   inStock: boolean;
@@ -15,7 +15,10 @@ export const products: Product[] = [
     id: 1,
     name: "Tule Devore Animal Print Preto c/Nude Tamanho P",
     price: 60.00,
-    image: "/images/tule/tuledevorepretocomnude.jpg",
+    images: [
+      "/images/tule/tuledevorepretocomnude.jpg",
+      "/images/tule/tuledevorepretocomnude2.jpg",
+    ],
     category: "Tule",
     description: "Tamanho P",
     inStock: true
@@ -24,7 +27,10 @@ export const products: Product[] = [
     id: 2,
     name: "Tule Devore Animal Print Preto c/Nude Tamanho M",
     price: 60.00,
-    image: "/images/tule/tuledevorepretocomnude.jpg",
+    images: [
+      "/images/tule/tuledevorepretocomnude.jpg",
+      "/images/tule/tuledevorepretocomnude2.jpg",
+    ],
     category: "Tule",
     description: "Tamanho M",
     inStock: true
