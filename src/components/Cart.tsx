@@ -74,25 +74,10 @@ const Cart = () => {
                 {items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3"
+                    className="bg-gray-50 rounded-lg p-3"
                   >
-                    {/* Exibe até duas imagens */}
-                    <div className="flex space-x-2">
-                      {item.images?.slice(0, 2).map((url, index) => (
-                        <img
-                          key={index}
-                          src={url || '/fallback-image.jpg'}
-                          alt={`${item.name} - Imagem ${index + 1}`}
-                          className="w-16 h-16 object-cover rounded-md"
-                          onError={(e) => {
-                            e.currentTarget.src = '/fallback-image.jpg';
-                          }}
-                        />
-                      ))}
-                    </div>
-
                     {/* Detalhes do produto */}
-                    <div className="flex-1">
+                    <div>
                       <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
                       <p className="text-gray-500 text-sm line-clamp-3 mb-2">
                         {item.description}
