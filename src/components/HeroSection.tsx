@@ -14,6 +14,7 @@ const HeroSection = () => {
         </div>
         <p className="text-xl md:text-2xl mb-8 text-white/90">
           Produtos selecionados com qualidade garantida
+          No Atacado acima de 3 peças 20% de desconto
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <div className="flex items-center text-lg">

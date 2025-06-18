@@ -148,7 +148,7 @@ const Cart = () => {
               {/* Mensagem de desconto */}
               {temDesconto && (
                 <div className="text-green-600 text-sm">
-                  Parabéns! Você ganhou 10% de desconto por comprar mais de 3 produtos.
+                  Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.
                 </div>
               )}
 
