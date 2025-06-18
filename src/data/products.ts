@@ -53,7 +53,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulepreto.jpg",
-      "/images/tule/tuledevorepretocomnude2.jpg",
+      "/images/tule/tulepreto1.jpg",
     ],
     category: "Tule",
     description: "Tamanho M",
@@ -65,7 +65,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulepreto.jpg",
-      "/images/tule/tuledevorepretocomnude2.jpg",
+      "/images/tule/tulepreto1.jpg",
     ],
     category: "Tule",
     description: "Tamanho G",
@@ -77,7 +77,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulebordo.jpg",
-      "/images/tule/tuledevorepretocomnude2.jpg",
+      "/images/tule/tulebordo1.jpg",
     ],
     category: "Tule",
     description: "Tamanho P",
@@ -89,7 +89,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulebordo.jpg",
-      "/images/tule/tuledevorepretocomnude2.jpg",
+      "/images/tule/tulebordo1.jpg",
     ],
     category: "Tule",
     description: "Tamanho M",
@@ -101,7 +101,7 @@ export const products: Product[] = [
     price: 60.00,
     images: [
        "/images/tule/tulebordo.jpg",
-      "/images/tule/tuledevorepretocomnude2.jpg",
+      "/images/tule/tulebordo1.jpg",
     ],
     category: "Tule",
     description: "Tamanho G",
