@@ -119,5 +119,16 @@ export const products: Product[] = [
     description: "Tamanho U",
     inStock: true
   },
-  
+  {
+    id: 10,
+    name: "Colete Metalizado Cobre Tamanho U",
+    price: 120.00,
+    images: [
+      "/images/coletemetalizado/cobre.jpg",
+      "/images/tule/tuledevorepretocomnude2.jpg",
+    ],
+    category: "Colete Metalizado",
+    description: "Tamanho U",
+    inStock: true
+  },
 ];
