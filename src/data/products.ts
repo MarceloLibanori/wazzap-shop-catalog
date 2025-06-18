@@ -15,7 +15,7 @@ export const products: Product[] = [
     id: 1,
     name: "Tule Devore Animal Print",
     price: 60.00,
-    image: "https://imgur.com/a/beGDhrP",
+    image: "/images/tuledevorepretocomnude.jpg",
     category: "Tule",
     description: "Tule de alta qualidade com estampa animal print",
     inStock: true
