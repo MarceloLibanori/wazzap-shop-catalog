@@ -19,14 +19,14 @@ const HeroSection = () => {
           Produtos selecionados com qualidade garantida<br />
 
           {/* Container do texto com scroll automático */}
-          <div className="overflow-hidden whitespace-nowrap h-12 mt-2">
+          <div className="overflow-hidden whitespace-nowrap h-12 mt-2 w-full">
             <div
               style={{
                 display: 'inline-flex',
-                gap: '1rem',
+                gap: '2rem',
                 whiteSpace: 'nowrap',
-                animation: 'scroll 10s linear infinite',
-                fontSize: '1.5rem', // ~text-xl, maior que antes
+                animation: 'scroll 15s linear infinite', // Mais lento
+                fontSize: '1.5rem', // Tamanho maior
                 color: 'black',
                 fontWeight: 'bold'
               }}
@@ -52,6 +52,13 @@ const HeroSection = () => {
                 alt="20% OFF"
                 className="h-8 w-auto inline-block align-middle mr-2"
               />
+              No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+
+              <img 
+                src="/images/icons/desconto-20.png" 
+                alt="20% OFF" 
+                className="h-8 w-auto inline-block align-middle mr-2"
+              />
               No Atacado acima de 3 peças 20% de desconto
             </div>
           </div>
@@ -74,7 +81,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Animação de scroll horizontal */}
+      {/* Animação CSS */}
       <style jsx>{`
         @keyframes scroll {
           0% {
