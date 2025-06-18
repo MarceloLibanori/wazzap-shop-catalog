@@ -25,7 +25,7 @@ const HeroSection = () => {
                 display: 'inline-flex',
                 gap: '2rem',
                 whiteSpace: 'nowrap',
-                animation: 'scroll 15s linear infinite', // Mais lento
+                animation: 'scroll 10s linear infinite', // Mais lento
                 fontSize: '1.5rem', // Tamanho maior
                 color: 'black',
                 fontWeight: 'bold'
