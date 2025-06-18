@@ -12,49 +12,49 @@ const Cart = () => {
     clearCart,
     getTotalPrice,
     getTotalPriceWithDiscount,
-    getTotalItems,
     isOpen,
     setIsOpen,
   } = useCart();
 
   const handleWhatsAppOrder = () => {
-  if (items.length === 0) return;
+    if (items.length === 0) return;
 
-  let message = "🛒 *Meu Pedido:*\n\n";
+    let message = "🛒 *Meu Pedido:*\n\n";
 
-  items.forEach((item, index) => {
-    message += `*${index + 1}. ${item.name}*\n`;
-    message += `SKU: ${item.sku}\n`;
-    message += `Quantidade: ${item.quantity}\n`;
-    message += `Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
-    message += `Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
-    message += "──────────────────────\n";
-  });
+    items.forEach((item, index) => {
+      message += `*${index + 1}. ${item.name}*\n`;
+      message += `SKU: ${item.sku}\n`;
+      message += `Quantidade: ${item.quantity}\n`;
+      message += `Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+      message += `Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+      message += "──────────────────────\n";
+    });
 
-  const totalPrice = getTotalPrice();
-  const totalPriceWithDiscount = getTotalPriceWithDiscount();
-  const hasDiscount = items.length > 3;
+    const totalPrice = getTotalPrice();
+    const totalPriceWithDiscount = getTotalPriceWithDiscount();
+    const hasDiscount = items.length > 3;
 
-  message += `\n💰 *Total sem desconto:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n`;
+    message += `\n💰 *Total sem desconto:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n`;
 
-  if (hasDiscount) {
-    message += `🎉 *Com desconto (20%):* R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}\n`;
-    message += "__________________________\n";
-    message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.\n";
-  }
+    if (hasDiscount) {
+      message += `🎉 *Com desconto (20%):* R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}\n`;
+      message += "__________________________\n";
+      message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.\n";
+    }
 
-  message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
+    message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-  const phoneNumber = "5511947537240"; // substitua pelo número correto
-  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-};
+    const phoneNumber = "5511947537240"; // substitua pelo número correto
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   if (!isOpen) return null;
 
   const totalOriginal = getTotalPrice();
   const totalComDesconto = getTotalPriceWithDiscount();
   const temDesconto = items.length > 3;
+  const faltamItensParaDesconto = 4 - items.length;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
@@ -136,6 +136,13 @@ const Cart = () => {
                 ))}
               </div>
             )}
+
+            {/* Mensagem incentivando ao desconto */}
+            {items.length > 0 && items.length < 4 && (
+              <div className="mt-4 text-sm text-yellow-600">
+                Compre mais {faltamItensParaDesconto} item(s) e ganhe 20% de desconto!
+              </div>
+            )}
           </div>
 
           {/* Rodapé com total e botões */}
@@ -151,11 +158,11 @@ const Cart = () => {
               {/* Mensagem de desconto */}
               {temDesconto && (
                 <div className="text-green-600 text-sm">
-                  Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.
+                  🎉 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.
                 </div>
               )}
 
-              {/* Valores detalhados (opcional) */}
+              {/* Valores detalhados */}
               {temDesconto && (
                 <div className="text-right text-sm text-gray-500">
                   <span className="line-through">R$ {totalOriginal.toFixed(2).replace('.', ',')}</span>
