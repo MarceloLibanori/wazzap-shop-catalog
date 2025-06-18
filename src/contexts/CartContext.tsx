@@ -102,12 +102,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // ✅ Desconto atualizado para 20%
+  // ✅ Desconto aplicado por unidade (20%)
   const getTotalPriceWithDiscount = () => {
-    const total = getTotalPrice();
-    const discountPercentage = items.length > 3 ? 0.20 : 0; // De 30% para 20%
+    if (items.length <= 3) return getTotalPrice();
 
-    return total * (1 - discountPercentage);
+    return items.reduce(
+      (total, item) => total + item.price * 0.8 * item.quantity,
+      0
+    );
   };
 
   return (
