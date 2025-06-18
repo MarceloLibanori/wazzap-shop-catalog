@@ -102,10 +102,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // ✨ Função atualizada com desconto de 30%
+  // ✅ Desconto atualizado para 20%
   const getTotalPriceWithDiscount = () => {
     const total = getTotalPrice();
-    const discountPercentage = items.length > 3 ? 0.20 : 0; // 20% se mais de 3 itens únicos
+    const discountPercentage = items.length > 3 ? 0.20 : 0; // De 30% para 20%
 
     return total * (1 - discountPercentage);
   };

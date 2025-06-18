@@ -37,7 +37,7 @@ const Cart = () => {
     message += `💰 *Total sem desconto: R$ ${totalPrice.toFixed(2).replace('.', ',')}*\n`;
 
     if (hasDiscount) {
-      message += `🎉 *Com desconto (10%): R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}*\n`;
+      message += `🎉 *Com desconto (20%): R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}*\n`;
     }
 
     message += "\nGostaria de finalizar este pedido!";
