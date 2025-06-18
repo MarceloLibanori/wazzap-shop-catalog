@@ -24,18 +24,26 @@ const Cart = () => {
 
     let message = "🛒 *Meu Pedido:*\n\n";
 
+    const hasDiscount = items.length > 3;
+
     items.forEach((item, index) => {
+      const priceWithDiscount = hasDiscount ? item.price * 0.8 : item.price;
+      const itemSubtotal = priceWithDiscount * item.quantity;
+
       message += `*${index + 1}. ${item.name}*\n`;
       message += `SKU: ${item.sku}\n`;
       message += `Quantidade: ${item.quantity}\n`;
-      message += `Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
-      message += `Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+
+      if (hasDiscount) {
+        message += `Preço unitário: ~~R$ ${item.price.toFixed(2).replace('.', ',')}~~ → `;
+      }
+      message += `Preço unitário: R$ ${priceWithDiscount.toFixed(2).replace('.', ',')}\n`;
+      message += `Subtotal: R$ ${itemSubtotal.toFixed(2).replace('.', ',')}\n`;
       message += "──────────────────────\n";
     });
 
     const totalPrice = getTotalPrice();
     const totalPriceWithDiscount = getTotalPriceWithDiscount();
-    const hasDiscount = items.length > 3;
 
     message += `\n💰 *Total sem desconto:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n`;
 
