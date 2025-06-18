@@ -236,7 +236,7 @@ export const products: Product[] = [
   {
     id: 18,
     name: "Top Verão 3018 Preto Tamanho: GG",
-    price: 45.00,
+    price: 54.00,
     images: [
       "/images/top/toppreto30181.jpg",
       "/images/top/toppreto3018.jpg",
