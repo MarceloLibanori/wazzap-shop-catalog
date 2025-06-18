@@ -40,22 +40,21 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    name: "Camiseta Fitness Dry",
-    price: 49.90,
-    originalPrice: 69.90,
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop",
-    category: "Roupas",
-    description: "Camiseta de alta performance com tecnologia dry-fit",
+    name: "Tule Devore Animal Print Preto Tamanho M",
+    price: 60.00,
+    image: "/images/tulepreto.jpg",
+    category: "Tule",
+    description: "Tamanho M",
     inStock: true
   },
   {
     id: 5,
-    name: "Relógio Smartwatch",
-    price: 399.99,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
-    category: "Eletrônicos",
-    description: "Smartwatch com monitor cardíaco e GPS",
-    inStock: false
+    name: "Tule Devore Animal Print Preto Tamanho G",
+    price: 60.00,
+    image: "/images/tulepreto.jpg",
+    category: "Tule",
+    description: "Tamanho G",
+    inStock: true
   },
   {
     id: 6,
