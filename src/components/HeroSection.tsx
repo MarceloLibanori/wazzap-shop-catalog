@@ -16,21 +16,25 @@ const HeroSection = () => {
         <p className="text-xl md:text-2xl mb-8 text-white/90">
           Produtos selecionados com qualidade garantida<br />
 
-          {/* Container com Sparkles + Imagem + Texto */}
+          {/* Container com Sparkles + Imagem + Texto animados */}
           <div className="mt-4 flex justify-center">
             <div className="flex items-center gap-4 bg-white p-3 rounded-full shadow-lg inline-flex">
+              {/* Sparkles antes */}
               <Sparkles className="h-8 w-8 text-yellow-400 animate-pulse" />
 
-              <img 
-                src="/images/icons/desconto-20.png" 
-                alt="20% OFF" 
-                className="h-16 w-auto"
+              {/* Imagem com efeito de pulso */}
+              <img
+                src="/images/icons/desconto-20.png"
+                alt="20% OFF"
+                className="h-16 w-auto animate-pulse"
               />
 
-              <span className="text-black font-bold text-2xl whitespace-nowrap">
+              {/* Texto com efeito de pulso */}
+              <span className="text-black font-bold text-2xl whitespace-nowrap animate-pulse">
                 ATACADO ACIMA DE 3 PEÇAS
               </span>
 
+              {/* Sparkles depois */}
               <Sparkles className="h-8 w-8 text-yellow-400 animate-pulse" />
             </div>
           </div>
