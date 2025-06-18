@@ -38,7 +38,7 @@ const HeroSection = () => {
                 alt="20% OFF" 
                 className="h-8 w-auto inline-block align-middle mr-2"
               />
-              No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+              ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO &nbsp;&nbsp;•&nbsp;&nbsp;
 
               <img 
                 src="/images/icons/desconto-20.png" 
@@ -52,14 +52,14 @@ const HeroSection = () => {
                 alt="20% OFF"
                 className="h-8 w-auto inline-block align-middle mr-2"
               />
-              No Atacado acima de 3 peças 20% de desconto &nbsp;&nbsp;•&nbsp;&nbsp;
+              ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO &nbsp;&nbsp;•&nbsp;&nbsp;
 
               <img 
                 src="/images/icons/desconto-20.png" 
                 alt="20% OFF" 
                 className="h-8 w-auto inline-block align-middle mr-2"
               />
-              No Atacado acima de 3 peças 20% de desconto
+              ATACADO ACIMA DE 3 PEÇAS 20% DESCONTO
             </div>
           </div>
         </p>
