@@ -85,8 +85,8 @@ export const generateOrderPDF = ({
     y += 5;
 
     const priceText = temDesconto
-      ? `Preço unitário: ${formatPrice(item.price)} → ${formatPrice(priceComDesconto)}`
-      : `Preço atacado: ${formatPrice(priceComDesconto)}`;
+  ? `Preço unitário: ${formatPrice(item.price)} → Preço atacado: ${formatPrice(priceComDesconto)}`
+  : `Preço unitário: ${formatPrice(priceComDesconto)}`;
 
     addText(priceText, marginX + 5, y, 10);
     y += 5;
