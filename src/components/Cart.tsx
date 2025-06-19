@@ -1,10 +1,9 @@
+
 import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Plus, Minus, ShoppingCart, MessageCircle, FileText } from 'lucide-react';
-import { generateOrderPDF } from '@/utils/pdfGenerator';
-import { toast } from '@/components/ui/use-toast';
+import { X, Plus, Minus, ShoppingCart, MessageCircle } from 'lucide-react';
 
 // Função auxiliar para formatar valores em Real
 const formatPrice = (price: number): string => {
@@ -24,8 +23,8 @@ const Cart = () => {
     setIsOpen,
   } = useCart();
 
-  const totalItems = getTotalQuantity();
-  const temDesconto = totalItems >= 3;
+  const totalItems = getTotalQuantity(); // Usar getTotalQuantity() ao invés de reduce manual
+  const temDesconto = totalItems >= 3; // Corrigir para usar quantidade total
   const totalOriginal = getTotalPrice();
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
@@ -63,39 +62,6 @@ const Cart = () => {
     const phoneNumber = "5511947537240"; // substitua pelo número correto
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
-  };
-
-  const handleGeneratePDF = () => {
-    if (items.length === 0) {
-      toast({
-        title: "Carrinho vazio",
-        description: "Adicione produtos ao carrinho para gerar o PDF.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    try {
-      const fileName = generateOrderPDF({
-        items,
-        totalOriginal,
-        totalComDesconto,
-        temDesconto,
-        totalQuantity: totalItems
-      });
-      
-      toast({
-        title: "PDF gerado!",
-        description: `O arquivo "${fileName}" foi baixado com sucesso.`,
-      });
-    } catch (error) {
-      console.error('Erro ao gerar PDF:', error);
-      toast({
-        title: "Erro",
-        description: "Não foi possível gerar o PDF. Tente novamente.",
-        variant: "destructive",
-      });
-    }
   };
 
   if (!isOpen) return null;
@@ -219,28 +185,17 @@ const Cart = () => {
                 </>
               )}
 
-              <div className="space-y-2">
-                <Button
-                  onClick={handleWhatsAppOrder}
-                  className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
-                >
-                  <MessageCircle className="h-4 w-4 mr-2" />
-                  Finalizar Pedido no WhatsApp
-                </Button>
+              <Button
+                onClick={handleWhatsAppOrder}
+                className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
+              >
+                <MessageCircle className="h-4 w-4 mr-2" />
+                Finalizar Pedido no WhatsApp
+              </Button>
 
-                <Button
-                  onClick={handleGeneratePDF}
-                  variant="outline"
-                  className="w-full"
-                >
-                  <FileText className="h-4 w-4 mr-2" />
-                  Gerar PDF do Pedido
-                </Button>
-
-                <Button variant="outline" onClick={clearCart} className="w-full">
-                  Limpar Carrinho
-                </Button>
-              </div>
+              <Button variant="outline" onClick={clearCart} className="w-full">
+                Limpar Carrinho
+              </Button>
             </div>
           )}
         </div>
