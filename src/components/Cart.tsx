@@ -78,7 +78,7 @@ const Cart = () => {
               <ShoppingCart className="h-5 w-5 text-whatsapp-500" />
               <h2 className="text-lg font-semibold">Carrinho</h2>
               {items.length > 0 && (
-                <Badge variant="secondary">
+                <Badge variant="secondary" className="inline-flex items-center">
                   {totalItems} {totalItems === 1 ? 'unidade' : 'unidades'}
                 </Badge>
               )}
@@ -120,7 +120,7 @@ const Cart = () => {
                       )}
                     </div>
 
-                    <div className="flex items-center space-x-2 mt-2">
+                    <div className="inline-flex items-center space-x-2 mt-2">
                       <Button
                         variant="outline"
                         size="sm"
@@ -129,7 +129,7 @@ const Cart = () => {
                       >
                         <Minus className="h-3 w-3" />
                       </Button>
-                      <span className="text-sm font-medium min-w-[2rem] text-center">
+                      <span className="inline-flex items-center text-sm font-medium min-w-[2rem] text-center">
                         {item.quantity}
                       </span>
                       <Button
