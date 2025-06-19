@@ -1,91 +1,133 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-// Definição da interface do item do carrinho
-interface CartItem {
-  id: string;
+// src/contexts/CartContext.tsx
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Product } from '@/interfaces/Product';
+
+export interface CartItem {
+  id: number;
   name: string;
-  sku: string;
-  description?: string;
   price: number;
+  images: string[];
+  description: string;
   quantity: number;
+  sku: string;
 }
 
-// Definição do tipo do contexto
 interface CartContextType {
   items: CartItem[];
+  addItem: (product: Product & { quantity?: number }) => void;
+  removeItem: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
+  clearCart: () => void;
+  getTotalItems: () => number;
+  getTotalQuantity: () => number;
   getTotalPrice: () => number;
   getTotalPriceWithDiscount: () => number;
-  getTotalQuantity: () => number;
-  updateQuantity: (id: string, newQuantity: number) => void;
-  removeItem: (id: string) => void;
-  clearCart: () => void;
   isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  setIsOpen: (open: boolean) => void;
 }
 
-// Criação do contexto
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Hook personalizado para usar o contexto
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) throw new Error('useCart deve ser usado dentro de CartProvider');
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
   return context;
 };
 
-// Provider do contexto
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Carregar carrinho do localStorage
-  useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setItems(JSON.parse(savedCart));
-    }
-  }, []);
+  const addItem = (product: Product & { quantity?: number }) => {
+    const { quantity: desiredQuantity = 1 } = product;
 
-  // Salvar carrinho no localStorage
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(items));
-  }, [items]);
+    setItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === product.id);
 
-  // Funções do carrinho
-  const getTotalPrice = () =>
-    items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + desiredQuantity }
+            : item
+        );
+      }
 
-  const getTotalPriceWithDiscount = () => getTotalPrice() * 0.8;
-
-  const getTotalQuantity = () =>
-    items.reduce((sum, item) => sum + item.quantity, 0);
-
-  const updateQuantity = (id: string, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      setItems(prev => prev.filter(item => item.id !== id));
-    } else {
-      setItems(prev =>
-        prev.map(item =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
+      return [
+        ...prevItems,
+        {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          images: product.images || [],
+          description: product.description || 'Descrição não disponível',
+          quantity: desiredQuantity,
+          sku: product.sku || `SKU-${product.id}`,
+        },
+      ];
+    });
   };
 
-  const removeItem = (id: string) => setItems(prev => prev.filter(item => item.id !== id));
+  const removeItem = (id: number) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
 
-  const clearCart = () => setItems([]);
+  const updateQuantity = (id: number, quantity: number) => {
+    if (quantity <= 0) {
+      removeItem(id);
+      return;
+    }
+
+    setItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item))
+    );
+  };
+
+  const clearCart = () => {
+    setItems([]);
+  };
+
+  const getTotalItems = () => {
+    return items.length;
+  };
+
+  const getTotalQuantity = () => {
+    return items.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const getTotalPrice = () => {
+    return items.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
+
+  const getTotalPriceWithDiscount = () => {
+    const totalQuantity = getTotalQuantity();
+
+    // Aplicar desconto apenas se a quantidade total for 3 ou mais
+    if (totalQuantity < 3) return getTotalPrice();
+
+    return items.reduce(
+      (total, item) => total + item.price * 0.8 * item.quantity,
+      0
+    );
+  };
 
   return (
     <CartContext.Provider
       value={{
         items,
+        addItem,
+        removeItem,
+        updateQuantity,
+        clearCart,
+        getTotalItems,
+        getTotalQuantity,
         getTotalPrice,
         getTotalPriceWithDiscount,
-        getTotalQuantity,
-        updateQuantity,
-        removeItem,
-        clearCart,
         isOpen,
         setIsOpen,
       }}
@@ -94,3 +136,5 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     </CartContext.Provider>
   );
 };
+
+export default CartContext;

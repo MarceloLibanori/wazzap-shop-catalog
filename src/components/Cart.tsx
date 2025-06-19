@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Plus, Minus, ShoppingCart, MessageCircle } from 'lucide-react';
+import { X, Plus, Minus, ShoppingCart, MessageCircle, FileText } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 // Função auxiliar para formatar valores em Real
@@ -42,10 +42,10 @@ const Cart = () => {
       message += `Quantidade: ${item.quantity}\n`;
 
       if (temDesconto) {
-        message += `Preço unitário: ~~${formatPrice(item.price)}~~ → `;
+        message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
       }
-      message += `Preço atacado: ${formatPrice(priceWithDiscount)}\n`;
-      message += `Subtotal: ${formatPrice(itemSubtotal)}\n`;
+      message += `Preço : R$ ${formatPrice(priceWithDiscount)}\n`;
+      message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
       message += "──────────────────────\n";
     });
 
@@ -57,12 +57,24 @@ const Cart = () => {
       message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
 
-    // Emoji normalmente usado diretamente
-    message += `\n📞 Gostaria de finalizar este pedido!\nObrigado 😊`;
+    // ✅ Emoji normal, sem codificação manual
+    message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    const phoneNumber = "5511947537240"; // Seu número do WhatsApp
+    const phoneNumber = "5511947537240"; // seu número aqui
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
+  };
+
+  const handleGeneratePDF = () => {
+    if (items.length === 0) {
+      toast({
+        title: "Carrinho vazio",
+        description: "Adicione produtos ao carrinho para gerar o PDF.",
+        variant: "destructive",
+      });
+      return;
+    }
+
   };
 
   if (!isOpen) return null;
@@ -196,20 +208,15 @@ const Cart = () => {
                 </Button>
 
                 <Button
-                  onClick={() => toast({ title: "PDF não implementado ainda!" })}
+                  onClick={handleGeneratePDF}
                   variant="outline"
                   className="w-full"
                 >
-                  <span className="inline-flex items-center">
-                    📄 Gerar PDF do Pedido
-                  </span>
+                  <FileText className="h-4 w-4 mr-2" />
+                  Gerar PDF do Pedido
                 </Button>
 
-                <Button
-                  variant="outline"
-                  onClick={clearCart}
-                  className="w-full"
-                >
+                <Button variant="outline" onClick={clearCart} className="w-full">
                   Limpar Carrinho
                 </Button>
               </div>
