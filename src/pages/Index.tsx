@@ -9,7 +9,8 @@ import ProductGrid from '@/components/ProductGrid';
 import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import { CartProvider } from '@/contexts/CartContext';
-import { products, Product } from '@/data/products';
+import { products } from '@/data/products';
+import { Product } from '@/interfaces/Product';
 
 const Index = () => {
   console.log('Index component rendering...');

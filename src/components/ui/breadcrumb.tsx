@@ -9,15 +9,8 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb"
+import { CartItem } from '@/contexts/CartContext';
 
-// Definição da interface para os itens do carrinho
-interface CartItem {
-  id: number
-  name: string
-  quantity: number
-}
-
-// Props do componente (caso queira passar os itens como prop)
 interface CarrinhoBreadcrumbProps {
   cartItems: CartItem[]
 }

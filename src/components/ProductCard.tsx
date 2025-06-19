@@ -4,17 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  images: string[];
-  category: string;
-  description: string;
-  inStock: boolean;
-}
+import { Product } from '@/interfaces/Product';
 
 interface ProductCardProps {
   product: Product;
