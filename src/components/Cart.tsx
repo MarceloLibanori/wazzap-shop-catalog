@@ -30,50 +30,40 @@ const Cart = () => {
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
   const handleWhatsAppOrder = () => {
-  if (items.length === 0) return;
+    if (items.length === 0) return;
 
-  // Função para remover acentos e caracteres especiais (opcional)
-  const removeAccents = (str: string): string => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  };
+    let message = "🛒 *Meu Pedido:*\n\n";
 
-  let message = "*Meu Pedido:*\n\n";
+    items.forEach((item, index) => {
+      const priceWithDiscount = temDesconto ? item.price * 0.8 : item.price;
+      const itemSubtotal = priceWithDiscount * item.quantity;
 
-  items.forEach((item, index) => {
-    const priceWithDiscount = temDesconto ? item.price * 0.8 : item.price;
-    const itemSubtotal = priceWithDiscount * item.quantity;
+      message += `*${index + 1}. ${item.name}*\n`;
+      message += `SKU: ${item.sku}\n`;
+      message += `Quantidade: ${item.quantity}\n`;
 
-    message += `*${index + 1}. ${removeAccents(item.name)}*\n`;
-    message += `SKU: ${item.sku}\n`;
-    message += `Quantidade: ${item.quantity}\n`;
+      if (temDesconto) {
+        message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
+      }
+      message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
+      message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
+      message += "──────────────────────\n";
+    });
+
+    message += `\n💰 *Total sem desconto:* ${formatPrice(totalOriginal)}\n`;
 
     if (temDesconto) {
-      message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
+      message += `🎉 *Com desconto (20%):* ${formatPrice(totalComDesconto)}\n`;
+      message += "__________________________\n";
+      message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
-    message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
-    message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
-    message += "----------------------\n"; // traço simples
-  });
 
-  message += `\n*Total sem desconto:* R$ ${formatPrice(totalOriginal)}\n`;
+    message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-  if (temDesconto) {
-    message += `*Com desconto (20%):* R$ ${formatPrice(totalComDesconto)}\n`;
-    message += "__________________________\n";
-    message += "\nParabens! Voce ganhou 20% de desconto por comprar mais de 3 unidades.\n";
-  }
-
-  message += "\nGostaria de finalizar este pedido!\nObrigado";
-
-  const phoneNumber = "5511947537240"; // substitua pelo número correto
-
-  // Remove acentos de toda mensagem antes de enviar (opcional, mas ajuda)
-  const cleanMessage = removeAccents(message);
-
-  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(cleanMessage)}`;
-
-  window.open(url, '_blank');
-};
+    const phoneNumber = "5511947537240"; // substitua pelo número correto
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   const handleGeneratePDF = () => {
     if (items.length === 0) {
