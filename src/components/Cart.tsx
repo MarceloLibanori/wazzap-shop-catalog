@@ -57,10 +57,9 @@ const Cart = () => {
       message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
 
-    // ✅ Emoji normal, sem codificação manual
     message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    const phoneNumber = "5511947537240"; // seu número aqui
+    const phoneNumber = "5511947537240"; // substitua pelo número correto
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -88,7 +87,7 @@ const Cart = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center space-x-2">
-              <ShoppingCart className="h-5 w-5 text-green-500" />
+              <ShoppingCart className="h-5 w-5 text-whatsapp-500" />
               <h2 className="text-lg font-semibold">Carrinho</h2>
               {items.length > 0 && (
                 <Badge variant="secondary" className="inline-flex items-center">
@@ -122,12 +121,12 @@ const Cart = () => {
                           <span className="text-gray-500 line-through text-xs">
                             {formatPrice(item.price)}
                           </span>{' '}
-                          <span className="text-green-600 font-semibold">
+                          <span className="text-whatsapp-600 font-semibold">
                             {formatPrice(item.price * 0.8)}
                           </span>
                         </div>
                       ) : (
-                        <span className="text-green-600 font-semibold">
+                        <span className="text-whatsapp-600 font-semibold">
                           {formatPrice(item.price)}
                         </span>
                       )}
@@ -180,7 +179,7 @@ const Cart = () => {
             <div className="border-t p-4 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold">Total:</span>
-                <span className="text-2xl font-bold text-green-600">
+                <span className="text-2xl font-bold text-whatsapp-600">
                   {formatPrice(totalComDesconto)}
                 </span>
               </div>
@@ -201,7 +200,7 @@ const Cart = () => {
               <div className="space-y-2">
                 <Button
                   onClick={handleWhatsAppOrder}
-                  className="w-full bg-green-500 hover:bg-green-600 text-white"
+                  className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
                 >
                   <MessageCircle className="h-4 w-4 mr-2" />
                   Finalizar Pedido no WhatsApp
