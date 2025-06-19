@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Search, ShoppingCart } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -10,8 +11,8 @@ interface HeaderProps {
 }
 
 const Header = ({ onSearch }: HeaderProps) => {
-  const { getTotalItems, setIsOpen } = useCart();
-  const totalItems = getTotalItems();
+  const { getTotalQuantity, setIsOpen } = useCart();
+  const totalQuantity = getTotalQuantity();
 
   return (
     <header className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
@@ -53,12 +54,12 @@ const Header = ({ onSearch }: HeaderProps) => {
               className="relative text-[#b37c74] border-[#b37c74] hover:bg-[#b37c74]/10"
             >
               <ShoppingCart className="h-4 w-4" />
-              {totalItems > 0 && (
+              {totalQuantity > 0 && (
                 <Badge
                   variant="destructive"
-                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs rounded-full border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80"
                 >
-                  {totalItems}
+                  {totalQuantity}
                 </Badge>
               )}
             </Button>
