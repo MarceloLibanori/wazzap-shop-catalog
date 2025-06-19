@@ -32,20 +32,31 @@ export const generateOrderPDF = ({
     doc.line(marginX, y, 190, y);
   };
 
-  const addText = (text: string, x: number, y: number, size = 12, isBold = false, align: 'left' | 'center' = 'left') => {
+  const addText = (
+    text: string,
+    x: number,
+    y: number,
+    size = 12,
+    isBold = false,
+    align: 'left' | 'center' = 'left'
+  ) => {
     doc.setFontSize(size);
     doc.setFont('helvetica', isBold ? 'bold' : 'normal');
     const textX = align === 'center' ? doc.internal.pageSize.getWidth() / 2 : x;
     doc.text(text, textX, y, { align });
   };
 
-  // Título centralizado
-  addText('🛍️ Leev Store - Resumo do Pedido', 0, y, 18, true, 'center');
+  const splitText = (text: string, maxWidth: number) => {
+    return doc.splitTextToSize(text, maxWidth);
+  };
+
+  // Título
+  addText('Leev Store - Resumo do Pedido', 0, y, 18, true, 'center');
   y += 10;
   addLineSeparator(y);
   y += 10;
 
-  // Informações básicas
+  // Data e Hora
   addText(`Data: ${date}`, marginX, y, 11);
   y += 6;
   addText(`Hora: ${time}`, marginX, y, 11);
@@ -54,17 +65,22 @@ export const generateOrderPDF = ({
   y += 10;
 
   // Itens
-  addText('📦 Itens do Pedido', marginX, y, 14, true);
+  addText('Itens do Pedido', marginX, y, 14, true);
   y += 10;
 
   items.forEach((item, index) => {
     const priceComDesconto = temDesconto ? item.price * (1 - discountRate) : item.price;
     const subtotal = priceComDesconto * item.quantity;
 
-    addText(`${index + 1}. ${item.name}`, marginX, y, 12, true);
-    y += 6;
+    const productLines = splitText(`${index + 1}. ${item.name}`, 160);
+    productLines.forEach(line => {
+      addText(line, marginX, y, 12, true);
+      y += 5;
+    });
+
     addText(`SKU: ${item.sku}`, marginX + 5, y, 10);
     y += 5;
+
     addText(`Quantidade: ${item.quantity}`, marginX + 5, y, 10);
     y += 5;
 
@@ -88,8 +104,9 @@ export const generateOrderPDF = ({
   });
 
   // Totais
-  addText('🧾 Resumo da Compra', marginX, y, 14, true);
+  addText('Resumo da Compra', marginX, y, 14, true);
   y += 8;
+
   addText(`Total de unidades: ${totalQuantity}`, marginX, y);
   y += 6;
   addText(`Total sem desconto: ${formatPrice(totalOriginal)}`, marginX, y);
@@ -98,15 +115,15 @@ export const generateOrderPDF = ({
   if (temDesconto) {
     addText(`Com desconto (20%): ${formatPrice(totalComDesconto)}`, marginX, y, 12, true);
     y += 8;
-    addText('🎉 Parabéns! Você ganhou 20% de desconto por comprar 3+ unidades.', marginX, y, 10);
-    y += 8;
+    addText('Parabéns! Você ganhou 20% de desconto por comprar 3+ unidades.', marginX, y, 10);
+    y += 10;
   }
 
   y += 10;
   addLineSeparator(y);
   y += 10;
 
-  // Rodapé fixado na parte inferior
+  // Rodapé
   const pageHeight = doc.internal.pageSize.height;
   addText('Leev Store - Produtos de qualidade', marginX, pageHeight - 20, 10);
   addText('WhatsApp: (11) 94753-7240', marginX, pageHeight - 12, 10);
