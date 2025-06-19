@@ -200,7 +200,9 @@ const Cart = () => {
                   variant="outline"
                   className="w-full"
                 >
-                  📄 Gerar PDF do Pedido
+                  <span className="inline-flex items-center">
+                    📄 Gerar PDF do Pedido
+                  </span>
                 </Button>
 
                 <Button
