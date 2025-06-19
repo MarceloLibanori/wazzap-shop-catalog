@@ -23,8 +23,8 @@ interface CarrinhoBreadcrumbProps {
 }
 
 export default function CarrinhoBreadcrumb({ cartItems }: CarrinhoBreadcrumbProps) {
-  // Quantidade de unidades/produtos distintos
-  const quantidadeUnidades = cartItems.length
+  // Soma total de todos os itens no carrinho (incluindo quantidades repetidas)
+  const totalItens = cartItems.reduce((acc, item) => acc + item.quantity, 0)
 
   // Função simples para pluralizar
   const pluralizar = (singular: string, plural: string, quantidade: number) => {
@@ -44,7 +44,7 @@ export default function CarrinhoBreadcrumb({ cartItems }: CarrinhoBreadcrumbProp
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbPage>
-            {quantidadeUnidades} {pluralizar("unidade", "unidades", quantidadeUnidades)}
+            {totalItens} {pluralizar("item", "itens", totalItens)}
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
