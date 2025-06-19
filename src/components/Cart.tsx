@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Plus, Minus, ShoppingCart, MessageCircle } from 'lucide-react';
+import { X, Plus, Minus, ShoppingCart, MessageCircle, FileText } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 // Função auxiliar para formatar valores em Real
 const formatPrice = (price: number): string => {
@@ -23,8 +23,8 @@ const Cart = () => {
     setIsOpen,
   } = useCart();
 
-  const totalItems = getTotalQuantity(); // Usar getTotalQuantity() ao invés de reduce manual
-  const temDesconto = totalItems >= 3; // Corrigir para usar quantidade total
+  const totalItems = getTotalQuantity();
+  const temDesconto = totalItems >= 3;
   const totalOriginal = getTotalPrice();
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
@@ -57,11 +57,24 @@ const Cart = () => {
       message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
 
+    // ✅ Emoji normal, sem codificação manual
     message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    const phoneNumber = "5511947537240"; // substitua pelo número correto
+    const phoneNumber = "5511947537240"; // seu número aqui
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
+  };
+
+  const handleGeneratePDF = () => {
+    if (items.length === 0) {
+      toast({
+        title: "Carrinho vazio",
+        description: "Adicione produtos ao carrinho para gerar o PDF.",
+        variant: "destructive",
+      });
+      return;
+    }
+
   };
 
   if (!isOpen) return null;
@@ -75,7 +88,7 @@ const Cart = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center space-x-2">
-              <ShoppingCart className="h-5 w-5 text-whatsapp-500" />
+              <ShoppingCart className="h-5 w-5 text-green-500" />
               <h2 className="text-lg font-semibold">Carrinho</h2>
               {items.length > 0 && (
                 <Badge variant="secondary" className="inline-flex items-center">
@@ -109,12 +122,12 @@ const Cart = () => {
                           <span className="text-gray-500 line-through text-xs">
                             {formatPrice(item.price)}
                           </span>{' '}
-                          <span className="text-whatsapp-600 font-semibold">
+                          <span className="text-green-600 font-semibold">
                             {formatPrice(item.price * 0.8)}
                           </span>
                         </div>
                       ) : (
-                        <span className="text-whatsapp-600 font-semibold">
+                        <span className="text-green-600 font-semibold">
                           {formatPrice(item.price)}
                         </span>
                       )}
@@ -167,7 +180,7 @@ const Cart = () => {
             <div className="border-t p-4 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold">Total:</span>
-                <span className="text-2xl font-bold text-whatsapp-600">
+                <span className="text-2xl font-bold text-green-600">
                   {formatPrice(totalComDesconto)}
                 </span>
               </div>
@@ -185,17 +198,28 @@ const Cart = () => {
                 </>
               )}
 
-              <Button
-                onClick={handleWhatsAppOrder}
-                className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
-              >
-                <MessageCircle className="h-4 w-4 mr-2" />
-                Finalizar Pedido no WhatsApp
-              </Button>
+              <div className="space-y-2">
+                <Button
+                  onClick={handleWhatsAppOrder}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white"
+                >
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  Finalizar Pedido no WhatsApp
+                </Button>
 
-              <Button variant="outline" onClick={clearCart} className="w-full">
-                Limpar Carrinho
-              </Button>
+                <Button
+                  onClick={handleGeneratePDF}
+                  variant="outline"
+                  className="w-full"
+                >
+                  <FileText className="h-4 w-4 mr-2" />
+                  Gerar PDF do Pedido
+                </Button>
+
+                <Button variant="outline" onClick={clearCart} className="w-full">
+                  Limpar Carrinho
+                </Button>
+              </div>
             </div>
           )}
         </div>
