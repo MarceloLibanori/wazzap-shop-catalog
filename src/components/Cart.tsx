@@ -43,10 +43,10 @@ const Cart = () => {
     message += `Quantidade: ${item.quantity}\n`;
 
     if (temDesconto) {
-      message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
+      message += `Preço unitário: ~~${formatPrice(item.price)}~~ → `;
     }
-    message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
-    message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
+    message += `Preço unitário: ${formatPrice(priceWithDiscount)}\n`;
+    message += `Subtotal: ${formatPrice(itemSubtotal)}\n`;
     message += "──────────────────────\n";
   });
 
@@ -60,11 +60,9 @@ const Cart = () => {
 
   message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-  // Substitui \n por %0A para funcionar corretamente no WhatsApp
-  const cleanMessage = message.replace(/\n/g, '%0A');
-
   const phoneNumber = "5511947537240"; // substitua pelo número correto
-  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(cleanMessage)}`;
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
   window.open(url, '_blank');
 };
 
