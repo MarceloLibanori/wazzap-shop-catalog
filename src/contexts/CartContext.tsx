@@ -1,3 +1,4 @@
+
 // src/contexts/CartContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Product } from '@/interfaces/Product';
@@ -14,7 +15,7 @@ export interface CartItem {
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (product: Product & { quantity?: number }) => void; // ✅ Permitir quantity opcional
+  addItem: (product: Product & { quantity?: number }) => void;
   removeItem: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
@@ -106,6 +107,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const getTotalPriceWithDiscount = () => {
     const totalQuantity = getTotalQuantity();
 
+    // Aplicar desconto apenas se a quantidade total for 3 ou mais
     if (totalQuantity < 3) return getTotalPrice();
 
     return items.reduce(

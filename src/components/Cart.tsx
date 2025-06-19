@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
@@ -17,12 +18,13 @@ const Cart = () => {
     clearCart,
     getTotalPrice,
     getTotalPriceWithDiscount,
+    getTotalQuantity,
     isOpen,
     setIsOpen,
   } = useCart();
 
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const temDesconto = items.length >= 3;
+  const totalItems = getTotalQuantity(); // Usar getTotalQuantity() ao invés de reduce manual
+  const temDesconto = totalItems >= 3; // Corrigir para usar quantidade total
   const totalOriginal = getTotalPrice();
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
@@ -151,9 +153,9 @@ const Cart = () => {
                 ))}
 
                 {/* Mensagem de incentivo ao desconto */}
-                {items.length > 0 && items.length < 3 && (
+                {totalItems > 0 && totalItems < 3 && (
                   <div className="mt-4 text-sm text-yellow-600">
-                    Compre mais {3 - items.length} item(s) e ganhe 20% de desconto!
+                    Compre mais {3 - totalItems} unidade(s) e ganhe 20% de desconto!
                   </div>
                 )}
               </div>
