@@ -43,10 +43,10 @@ const Cart = () => {
       message += `Quantidade: ${item.quantity}\n`;
 
       if (temDesconto) {
-        message += `Preço unitário: ~~${formatPrice(item.price)}~~ → `;
+        message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
       }
-      message += `Preço unitário: ${formatPrice(priceWithDiscount)}\n`;
-      message += `Subtotal: ${formatPrice(itemSubtotal)}\n`;
+      message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
+      message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
       message += "──────────────────────\n";
     });
 
@@ -60,13 +60,8 @@ const Cart = () => {
 
     message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    // Garantir codificação UTF-8 correta para WhatsApp
-    const encodeMessageForWhatsApp = (msg: string): string => {
-      return encodeURIComponent(unescape(encodeURIComponent(msg)));
-    };
-
     const phoneNumber = "5511947537240"; // substitua pelo número correto
-    const url = `https://wa.me/${phoneNumber}?text=${encodeMessageForWhatsApp(message)}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
@@ -86,9 +81,9 @@ const Cart = () => {
         totalOriginal,
         totalComDesconto,
         temDesconto,
-        totalQuantity: totalItems,
+        totalQuantity: totalItems
       });
-
+      
       toast({
         title: "PDF gerado!",
         description: `O arquivo "${fileName}" foi baixado com sucesso.`,
