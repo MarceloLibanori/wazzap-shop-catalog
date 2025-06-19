@@ -44,7 +44,7 @@ const Cart = () => {
       if (temDesconto) {
         message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
       }
-      message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
+      message += `Preço atacado: R$ ${formatPrice(priceWithDiscount)}\n`;
       message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
       message += "──────────────────────\n";
     });
