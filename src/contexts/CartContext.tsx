@@ -14,7 +14,7 @@ export interface CartItem {
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (product: Product) => void;
+  addItem: (product: Product & { quantity?: number }) => void; // ✅ Permitir quantity opcional
   removeItem: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
@@ -40,13 +40,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const addItem = (product: Product) => {
-    setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id);
+  const addItem = (product: Product & { quantity?: number }) => {
+    const { quantity: desiredQuantity = 1 } = product;
+
+    setItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === product.id);
+
       if (existingItem) {
-        return prevItems.map(item =>
+        return prevItems.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + desiredQuantity }
             : item
         );
       }
@@ -59,7 +62,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           price: product.price,
           images: product.images || [],
           description: product.description || 'Descrição não disponível',
-          quantity: 1,
+          quantity: desiredQuantity,
           sku: product.sku || `SKU-${product.id}`,
         },
       ];
@@ -67,7 +70,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeItem = (id: number) => {
-    setItems(prevItems => prevItems.filter(item => item.id !== id));
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const updateQuantity = (id: number, quantity: number) => {
@@ -76,10 +79,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
+    setItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item))
     );
   };
 
@@ -102,9 +103,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // ✅ Desconto aplicado por unidade do item, se tiver pelo menos 3 unidades no total
   const getTotalPriceWithDiscount = () => {
-    const totalQuantity = getTotalQuantity(); // Total de unidades no carrinho
+    const totalQuantity = getTotalQuantity();
 
     if (totalQuantity < 3) return getTotalPrice();
 
@@ -134,3 +134,5 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     </CartContext.Provider>
   );
 };
+
+export default CartContext;

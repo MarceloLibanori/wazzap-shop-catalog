@@ -4,6 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Plus, Minus, ShoppingCart, MessageCircle } from 'lucide-react';
 
+// Função auxiliar para formatar valores em Real
+const formatPrice = (price: number): string => {
+  return `R$ ${price.toFixed(2).replace('.', ',')}`;
+};
+
 const Cart = () => {
   const {
     items,
@@ -16,41 +21,38 @@ const Cart = () => {
     setIsOpen,
   } = useCart();
 
-  // 🔢 Contagem total de unidades no carrinho
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  const temDesconto = items.length >= 3;
+  const totalOriginal = getTotalPrice();
+  const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
   const handleWhatsAppOrder = () => {
     if (items.length === 0) return;
 
     let message = "🛒 *Meu Pedido:*\n\n";
 
-    const hasDiscount = items.length > 3;
-
     items.forEach((item, index) => {
-      const priceWithDiscount = hasDiscount ? item.price * 0.8 : item.price;
+      const priceWithDiscount = temDesconto ? item.price * 0.8 : item.price;
       const itemSubtotal = priceWithDiscount * item.quantity;
 
       message += `*${index + 1}. ${item.name}*\n`;
       message += `SKU: ${item.sku}\n`;
       message += `Quantidade: ${item.quantity}\n`;
 
-      if (hasDiscount) {
-        message += `Preço unitário: ~~R$ ${item.price.toFixed(2).replace('.', ',')}~~ → `;
+      if (temDesconto) {
+        message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
       }
-      message += `Preço unitário: R$ ${priceWithDiscount.toFixed(2).replace('.', ',')}\n`;
-      message += `Subtotal: R$ ${itemSubtotal.toFixed(2).replace('.', ',')}\n`;
+      message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
+      message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
       message += "──────────────────────\n";
     });
 
-    const totalPrice = getTotalPrice();
-    const totalPriceWithDiscount = getTotalPriceWithDiscount();
+    message += `\n💰 *Total sem desconto:* ${formatPrice(totalOriginal)}\n`;
 
-    message += `\n💰 *Total sem desconto:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n`;
-
-    if (hasDiscount) {
-      message += `🎉 *Com desconto (20%):* R$ ${totalPriceWithDiscount.toFixed(2).replace('.', ',')}\n`;
+    if (temDesconto) {
+      message += `🎉 *Com desconto (20%):* ${formatPrice(totalComDesconto)}\n`;
       message += "__________________________\n";
-      message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 produtos.\n";
+      message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
 
     message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
@@ -62,17 +64,9 @@ const Cart = () => {
 
   if (!isOpen) return null;
 
-  const totalOriginal = getTotalPrice();
-  const totalComDesconto = getTotalPriceWithDiscount();
-  const temDesconto = items.length > 3;
-  const faltamItensParaDesconto = 4 - items.length;
-
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      <div
-        className="absolute inset-0 bg-black/50"
-        onClick={() => setIsOpen(false)}
-      ></div>
+      <div className="absolute inset-0 bg-black/50" onClick={() => setIsOpen(false)}></div>
 
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
         <div className="flex flex-col h-full">
@@ -92,7 +86,7 @@ const Cart = () => {
             </Button>
           </div>
 
-          {/* Carrinho vazio ou com itens */}
+          {/* Conteúdo do carrinho */}
           <div className="flex-1 overflow-y-auto p-4">
             {items.length === 0 ? (
               <div className="text-center py-8">
@@ -103,70 +97,65 @@ const Cart = () => {
               <div className="space-y-4">
                 {items.map((item) => (
                   <div key={item.id} className="bg-gray-50 rounded-lg p-3">
-                    <div>
-                      <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
-                      <p className="text-xs text-gray-500 mb-1">SKU: {item.sku}</p>
-                      <p className="text-gray-500 text-sm line-clamp-3 mb-2">
-                        {item.description}
-                      </p>
+                    <h3 className="font-medium text-sm line-clamp-2">{item.name}</h3>
+                    <p className="text-xs text-gray-500 mb-1">SKU: {item.sku}</p>
+                    <p className="text-gray-500 text-sm line-clamp-3 mb-2">{item.description}</p>
 
-                      {/* Exibir preço com e sem desconto */}
-                      <div className="mt-1">
-                        {temDesconto ? (
-                          <div>
-                            <span className="text-gray-500 line-through text-xs">
-                              R$ {item.price.toFixed(2).replace('.', ',')}
-                            </span>{' '}
-                            <span className="text-whatsapp-600 font-semibold">
-                              R$ {(item.price * 0.8).toFixed(2).replace('.', ',')}
-                            </span>
-                          </div>
-                        ) : (
+                    <div className="mt-1">
+                      {temDesconto ? (
+                        <div>
+                          <span className="text-gray-500 line-through text-xs">
+                            {formatPrice(item.price)}
+                          </span>{' '}
                           <span className="text-whatsapp-600 font-semibold">
-                            R$ {item.price.toFixed(2).replace('.', ',')}
+                            {formatPrice(item.price * 0.8)}
                           </span>
-                        )}
-                      </div>
-
-                      <div className="flex items-center space-x-2 mt-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="h-8 w-8 p-0"
-                        >
-                          <Minus className="h-3 w-3" />
-                        </Button>
-                        <span className="text-sm font-medium min-w-[2rem] text-center">
-                          {item.quantity}
+                        </div>
+                      ) : (
+                        <span className="text-whatsapp-600 font-semibold">
+                          {formatPrice(item.price)}
                         </span>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="h-8 w-8 p-0"
-                        >
-                          <Plus className="h-3 w-3" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => removeItem(item.id)}
-                          className="text-red-500 hover:text-red-700 ml-2"
-                        >
-                          <X className="h-3 w-3" />
-                        </Button>
-                      </div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center space-x-2 mt-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        className="h-8 w-8 p-0"
+                      >
+                        <Minus className="h-3 w-3" />
+                      </Button>
+                      <span className="text-sm font-medium min-w-[2rem] text-center">
+                        {item.quantity}
+                      </span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        className="h-8 w-8 p-0"
+                      >
+                        <Plus className="h-3 w-3" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => removeItem(item.id)}
+                        className="text-red-500 hover:text-red-700 ml-2"
+                      >
+                        <X className="h-3 w-3" />
+                      </Button>
                     </div>
                   </div>
                 ))}
-              </div>
-            )}
 
-            {/* Mensagem incentivando ao desconto */}
-            {items.length > 0 && items.length < 4 && (
-              <div className="mt-4 text-sm text-yellow-600">
-                Compre mais {faltamItensParaDesconto} item(s) e ganhe 20% de desconto!
+                {/* Mensagem de incentivo ao desconto */}
+                {items.length > 0 && items.length < 3 && (
+                  <div className="mt-4 text-sm text-yellow-600">
+                    Compre mais {3 - items.length} item(s) e ganhe 20% de desconto!
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -177,25 +166,23 @@ const Cart = () => {
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold">Total:</span>
                 <span className="text-2xl font-bold text-whatsapp-600">
-                  R$ {totalComDesconto.toFixed(2).replace('.', ',')}
+                  {formatPrice(totalComDesconto)}
                 </span>
               </div>
 
-              {/* Detalhes do desconto */}
               {temDesconto && (
                 <>
                   <div className="flex justify-between text-sm text-gray-600">
                     <span>Subtotal:</span>
-                    <span>R$ {totalOriginal.toFixed(2).replace('.', ',')}</span>
+                    <span>{formatPrice(totalOriginal)}</span>
                   </div>
                   <div className="flex justify-between text-green-600 font-medium">
                     <span>Com desconto (20%):</span>
-                    <span>R$ {totalComDesconto.toFixed(2).replace('.', ',')}</span>
+                    <span>{formatPrice(totalComDesconto)}</span>
                   </div>
                 </>
               )}
 
-              {/* Botão WhatsApp */}
               <Button
                 onClick={handleWhatsAppOrder}
                 className="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white"
@@ -204,11 +191,7 @@ const Cart = () => {
                 Finalizar Pedido no WhatsApp
               </Button>
 
-              <Button
-                variant="outline"
-                onClick={clearCart}
-                className="w-full"
-              >
+              <Button variant="outline" onClick={clearCart} className="w-full">
                 Limpar Carrinho
               </Button>
             </div>

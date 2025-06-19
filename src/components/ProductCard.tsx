@@ -36,7 +36,10 @@ const ProductCard = ({ product, onWhatsAppClick }: ProductCardProps) => {
 
   const handleAddToCart = () => {
     if (product.inStock) {
+      // Adiciona o produto com a quantidade selecionada
       addItem({ ...product, quantity });
+      // Reseta a quantidade para 1 após adicionar
+      setQuantity(1);
     }
   };
 
