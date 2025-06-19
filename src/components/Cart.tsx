@@ -30,40 +30,40 @@ const Cart = () => {
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
   const handleWhatsAppOrder = () => {
-    if (items.length === 0) return;
+  if (items.length === 0) return;
 
-    let message = "🛒 *Meu Pedido:*\n\n";
+  let message = "🛒 *Meu Pedido:*\n\n";
 
-    items.forEach((item, index) => {
-      const priceWithDiscount = temDesconto ? item.price * 0.8 : item.price;
-      const itemSubtotal = priceWithDiscount * item.quantity;
+  items.forEach((item, index) => {
+    const priceWithDiscount = temDesconto ? item.price * 0.8 : item.price;
+    const itemSubtotal = priceWithDiscount * item.quantity;
 
-      message += `*${index + 1}. ${item.name}*\n`;
-      message += `SKU: ${item.sku}\n`;
-      message += `Quantidade: ${item.quantity}\n`;
-
-      if (temDesconto) {
-        message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
-      }
-      message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
-      message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
-      message += "──────────────────────\n";
-    });
-
-    message += `\n💰 *Total sem desconto:* ${formatPrice(totalOriginal)}\n`;
+    message += `*${index + 1}. ${item.name}*\n`;
+    message += `SKU: ${item.sku}\n`;
+    message += `Quantidade: ${item.quantity}\n`;
 
     if (temDesconto) {
-      message += `🎉 *Com desconto (20%):* ${formatPrice(totalComDesconto)}\n`;
-      message += "__________________________\n";
-      message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
+      message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
     }
+    message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
+    message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
+    message += "──────────────────────\n";
+  });
 
-    message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
+  message += `\n💰 *Total sem desconto:* ${formatPrice(totalOriginal)}\n`;
 
-    const phoneNumber = "5511947537240"; // substitua pelo número correto
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  };
+  if (temDesconto) {
+    message += `🎉 *Com desconto (20%):* ${formatPrice(totalComDesconto)}\n`;
+    message += "__________________________\n";
+    message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
+  }
+
+  message += "\n📞 Gostaria de finalizar este pedido!\nObrigado %F0%9F%98%8A"; // 😊 codificado como %F0%9F%98%8A
+
+  const phoneNumber = "5511947537240"; // substitua pelo número correto
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
 
   const handleGeneratePDF = () => {
     if (items.length === 0) {
