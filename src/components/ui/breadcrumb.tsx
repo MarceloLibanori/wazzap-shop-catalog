@@ -1,18 +1,35 @@
-"use client" // Se estiver usando Next.js App Router
+"use client"
 
 import * as React from "react"
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb"
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb"
 
-// Exemplo de dados do carrinho
-const cartItems = [
-  { id: 1, name: "Camisa", quantity: 2 },
-  { id: 2, name: "Calça", quantity: 1 },
-  { id: 3, name: "Tênis", quantity: 1 },
-]
+// Definição da interface para os itens do carrinho
+interface CartItem {
+  id: number
+  name: string
+  quantity: number
+}
 
-export default function CarrinhoBreadcrumb() {
+// Props do componente (caso queira passar os itens como prop)
+interface CarrinhoBreadcrumbProps {
+  cartItems: CartItem[]
+}
+
+export default function CarrinhoBreadcrumb({ cartItems }: CarrinhoBreadcrumbProps) {
   // Quantidade de unidades/produtos distintos
   const quantidadeUnidades = cartItems.length
+
+  // Função simples para pluralizar
+  const pluralizar = (singular: string, plural: string, quantidade: number) => {
+    return quantidade === 1 ? singular : plural
+  }
 
   return (
     <Breadcrumb>
@@ -27,7 +44,7 @@ export default function CarrinhoBreadcrumb() {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbPage>
-            {quantidadeUnidades} unidade{quantidadeUnidades !== 1 ? "s" : ""}
+            {quantidadeUnidades} {pluralizar("unidade", "unidades", quantidadeUnidades)}
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
