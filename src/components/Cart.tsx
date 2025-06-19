@@ -3,6 +3,7 @@ import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Plus, Minus, ShoppingCart, MessageCircle, FileText } from 'lucide-react';
+import { generateOrderPDF } from '@/utils/pdfGenerator';
 import { toast } from '@/components/ui/use-toast';
 
 // Função auxiliar para formatar valores em Real
@@ -44,7 +45,7 @@ const Cart = () => {
       if (temDesconto) {
         message += `Preço unitário: ~~R$ ${formatPrice(item.price)}~~ → `;
       }
-      message += `Preço atacado!: R$ ${formatPrice(priceWithDiscount)}\n`;
+      message += `Preço unitário: R$ ${formatPrice(priceWithDiscount)}\n`;
       message += `Subtotal: R$ ${formatPrice(itemSubtotal)}\n`;
       message += "──────────────────────\n";
     });
@@ -74,6 +75,27 @@ const Cart = () => {
       return;
     }
 
+    try {
+      const fileName = generateOrderPDF({
+        items,
+        totalOriginal,
+        totalComDesconto,
+        temDesconto,
+        totalQuantity: totalItems
+      });
+      
+      toast({
+        title: "PDF gerado!",
+        description: `O arquivo "${fileName}" foi baixado com sucesso.`,
+      });
+    } catch (error) {
+      console.error('Erro ao gerar PDF:', error);
+      toast({
+        title: "Erro",
+        description: "Não foi possível gerar o PDF. Tente novamente.",
+        variant: "destructive",
+      });
+    }
   };
 
   if (!isOpen) return null;
