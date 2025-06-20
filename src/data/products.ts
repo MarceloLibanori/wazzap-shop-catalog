@@ -194,6 +194,7 @@ export const products: Product[] = [
     sku: "821",
     inStock: true
   },
+  //  INICIO TOP 3018
   {
     id: 15,
     name: "Top Verão 3018 Preto Tamanho: P",
@@ -505,7 +506,8 @@ export const products: Product[] = [
     description: "Tamanho: GG",
     sku: "3018",
     inStock: true
-  },{
+  },
+  {
     id: 39,
     name: "Top Verão 3018 Pink Tamanho: P",
     price: 56.25,
@@ -555,6 +557,98 @@ export const products: Product[] = [
     category: "Top 3018",
     description: "Tamanho: GG",
     sku: "3018",
+    inStock: true
+  },
+  {
+    id: 43,
+    name: "Top Verão 3018 Coral Tamanho: P",
+    price: 56.25,
+    images: [
+      "/images/top/topcoral3018.jpg",
+      "/images/top/topcoral30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 44,
+    name: "Top Verão 3018 Branco Tamanho: P",
+    price: 56.25,
+    images: [
+      "/images/top/topbranco3018.jpg",
+      "/images/top/topbranco30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 45,
+    name: "Top Verão 3018 Branco Tamanho: M",
+    price: 56.25,
+    images: [
+      "/images/top/topbranco3018.jpg",
+      "/images/top/topbranco30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: M",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 46,
+    name: "Top Verão 3018 Branco Tamanho: G",
+    price: 56.25,
+    images: [
+      "/images/top/topbranco3018.jpg",
+      "/images/top/topbranco30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: G",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 47,
+    name: "Top Verão 3018 Branco Tamanho: GG",
+    price: 56.25,
+    images: [
+      "/images/top/topbranco3018.jpg",
+      "/images/top/topbranco30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 48,
+    name: "Top Verão 3018 Pessego Tamanho: P",
+    price: 56.25,
+    images: [
+      "/images/top/toppessego3018.jpg",
+      "/images/top/toppessego30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+//  INICIO TRICO HOT FIX
+  {
+    id: 49,
+    name: "Tricot Hot Fix Preto Tamanho: U",
+    price: 231.25,
+    images: [
+      "/images/tricothotfix/hotfixpreto.jpg",
+      "/images/top/hotfixpreto1.jpg",
+    ],
+    category: "Tricot Hot Fix",
+    description: "Tamanho: U",
+    sku: "222",
     inStock: true
   },
 ];
