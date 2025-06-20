@@ -1,3 +1,4 @@
+import { Factory } from "lucide-react";
 
 export interface Product {
   id: number;
@@ -54,6 +55,19 @@ const tuleProducts: Product[] = [
   },
   {
     id: 4,
+    name: "Tule Devore Animal Print Preto Tamanho: P",
+    price: 75.00,
+    images: [
+      "/images/tule/tulepreto.jpg",
+      "/images/tule/tulepreto1.jpg",
+    ],
+    category: "Tule",
+    description: "Tamanho: P",
+    sku: "1300",
+    inStock: false
+  },
+  {
+    id: 5,
     name: "Tule Devore Animal Print Preto Tamanho: M",
     price: 75.00,
     images: [
@@ -66,7 +80,7 @@ const tuleProducts: Product[] = [
     inStock: true
   },
   {
-    id: 5,
+    id: 6,
     name: "Tule Devore Animal Print Preto Tamanho: G",
     price: 75.00,
     images: [
@@ -79,7 +93,7 @@ const tuleProducts: Product[] = [
     inStock: true
   },
   {
-    id: 6,
+    id: 7,
     name: "Tule Devore Animal Print Bordo Tamanho: P",
     price: 75.00,
     images: [
@@ -92,7 +106,7 @@ const tuleProducts: Product[] = [
     inStock: true
   },
   {
-    id: 7,
+    id: 8,
     name: "Tule Devore Animal Print Bordo Tamanho: M",
     price: 75.00,
     images: [
@@ -105,7 +119,7 @@ const tuleProducts: Product[] = [
     inStock: true
   },
   {
-    id: 8,
+    id: 9,
     name: "Tule Devore Animal Print Bordo Tamanho: G",
     price: 75.00,
     images: [
@@ -318,7 +332,7 @@ const top3018Products: Product[] = [
     category: "Top 3018",
     description: "Tamanho: P",
     sku: "3018",
-    inStock: true
+    inStock: false
   },
   {
     id: 69,
@@ -357,7 +371,7 @@ const top3018Products: Product[] = [
     category: "Top 3018",
     description: "Tamanho: GG",
     sku: "3018",
-    inStock: true
+    inStock: false
   },
   {
     id: 72,
@@ -413,6 +427,19 @@ const top3018Products: Product[] = [
   },
   {
     id: 76,
+    name: "Top Verão 3018 Tiffany Tamanho: P",
+    price: 56.25,
+    images: [
+      "/images/top/toptiffany3018.jpg",
+      "/images/top/toptiffany30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 77,
     name: "Top Verão 3018 Tiffany Tamanho: M",
     price: 56.25,
     images: [
@@ -425,7 +452,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 77,
+    id: 78,
     name: "Top Verão 3018 Tiffany Tamanho: G",
     price: 56.25,
     images: [
@@ -438,7 +465,20 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 78,
+    id: 79,
+    name: "Top Verão 3018 Tiffany Tamanho: GG",
+    price: 56.25,
+    images: [
+      "/images/top/toptiffany3018.jpg",
+      "/images/top/toptiffany30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 80,
     name: "Top Verão 3018 Chumbo Tamanho: P",
     price: 56.25,
     images: [
@@ -451,7 +491,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 79,
+    id: 81,
     name: "Top Verão 3018 Chumbo Tamanho: M",
     price: 56.25,
     images: [
@@ -464,7 +504,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 80,
+    id: 82,
     name: "Top Verão 3018 Chumbo Tamanho: G",
     price: 56.25,
     images: [
@@ -477,7 +517,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 81,
+    id: 83,
     name: "Top Verão 3018 Chumbo Tamanho: GG",
     price: 56.25,
     images: [
@@ -490,7 +530,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 82,
+    id: 84,
     name: "Top Verão 3018 Marsala Tamanho: P",
     price: 56.25,
     images: [
@@ -503,7 +543,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 83,
+    id: 85,
     name: "Top Verão 3018 Marsala Tamanho: M",
     price: 56.25,
     images: [
@@ -516,7 +556,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 84,
+    id: 85,
     name: "Top Verão 3018 Marsala Tamanho: G",
     price: 56.25,
     images: [
@@ -529,7 +569,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 85,
+    id: 86,
     name: "Top Verão 3018 Marsala Tamanho: GG",
     price: 56.25,
     images: [
@@ -542,7 +582,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 86,
+    id: 87,
     name: "Top Verão 3018 Pink Tamanho: P",
     price: 56.25,
     images: [
@@ -555,7 +595,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 87,
+    id: 88,
     name: "Top Verão 3018 Pink Tamanho: M",
     price: 56.25,
     images: [
@@ -568,7 +608,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 88,
+    id: 89,
     name: "Top Verão 3018 Pink Tamanho: G",
     price: 56.25,
     images: [
@@ -581,7 +621,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 89,
+    id: 90,
     name: "Top Verão 3018 Pink Tamanho: GG",
     price: 56.25,
     images: [
@@ -593,19 +633,7 @@ const top3018Products: Product[] = [
     sku: "3018",
     inStock: true
   },
-  {
-    id: 90,
-    name: "Top Verão 3018 Coral Tamanho: P",
-    price: 56.25,
-    images: [
-      "/images/top/topcoral3018.jpg",
-      "/images/top/topcoral30181.jpg",
-    ],
-    category: "Top 3018",
-    description: "Tamanho: P",
-    sku: "3018",
-    inStock: true
-  },
+  
   {
     id: 91,
     name: "Top Verão 3018 Branco Tamanho: P",
@@ -670,6 +698,97 @@ const top3018Products: Product[] = [
     description: "Tamanho: P",
     sku: "3018",
     inStock: true
+  },
+  {
+    id: 96,
+    name: "Top Verão 3018 Pessego Tamanho: M",
+    price: 56.25,
+    images: [
+      "/images/top/toppessego3018.jpg",
+      "/images/top/toppessego30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: M",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 97,
+    name: "Top Verão 3018 Pessego Tamanho: G",
+    price: 56.25,
+    images: [
+      "/images/top/toppessego3018.jpg",
+      "/images/top/toppessego30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: G",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 98,
+    name: "Top Verão 3018 Pessego Tamanho: GG",
+    price: 56.25,
+    images: [
+      "/images/top/toppessego3018.jpg",
+      "/images/top/toppessego30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 99,
+    name: "Top Verão 3018 Coral Tamanho: P",
+    price: 56.25,
+    images: [
+      "/images/top/topcoral3018.jpg",
+      "/images/top/topcoral30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 100,
+    name: "Top Verão 3018 Coral Tamanho: M",
+    price: 56.25,
+    images: [
+      "/images/top/topcoral3018.jpg",
+      "/images/top/topcoral30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: M",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 101,
+    name: "Top Verão 3018 Coral Tamanho: G",
+    price: 56.25,
+    images: [
+      "/images/top/topcoral3018.jpg",
+      "/images/top/topcoral30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: G",
+    sku: "3018",
+    inStock: false
+  },
+  {
+    id: 102,
+    name: "Top Verão 3018 Coral Tamanho: GG",
+    price: 56.25,
+    images: [
+      "/images/top/topcoral3018.jpg",
+      "/images/top/topcoral30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
+    sku: "3018",
+    inStock: false
   },
 ];
 
