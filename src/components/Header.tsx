@@ -12,7 +12,7 @@ interface HeaderProps {
 
 const Header = ({ onSearch }: HeaderProps) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const { items, getTotalQuantity } = useCart();
+  const { getTotalQuantity, setIsOpen } = useCart();
   
   const totalQuantity = getTotalQuantity();
 
@@ -25,6 +25,10 @@ const Header = ({ onSearch }: HeaderProps) => {
     const value = e.target.value;
     setSearchTerm(value);
     onSearch(value);
+  };
+
+  const handleCartClick = () => {
+    setIsOpen(true);
   };
 
   return (
@@ -60,7 +64,12 @@ const Header = ({ onSearch }: HeaderProps) => {
 
           {/* Cart */}
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm" className="relative">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="relative"
+              onClick={handleCartClick}
+            >
               <ShoppingCart className="h-5 w-5" />
               {totalQuantity > 0 && (
                 <Badge className="rounded-full border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80 absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
