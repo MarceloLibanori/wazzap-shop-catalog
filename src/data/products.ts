@@ -644,7 +644,7 @@ export const products: Product[] = [
     price: 231.25,
     images: [
       "/images/tricothotfix/hotfixpreto.jpg",
-      "/images/top/hotfixpreto1.jpg",
+      "/images/tricothotfix/hotfixpreto1.jpg",
     ],
     category: "Tricot Hot Fix",
     description: "Tamanho: U",
