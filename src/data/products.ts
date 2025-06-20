@@ -928,6 +928,32 @@ const tricotmetalizadoProducts: Product[] = [
     sku: "860",
     inStock: true
   }, 
+  {
+    id: 865,
+    name: "Tricot Metalizado Dourado Tamanho: U",
+    price: 156.25,
+    images: [
+      "/images/tricotmetalizado/fiometalizadodourado1.jpg",
+      "/images/tricotmetalizado/fiometalizadodourado.jpg",
+    ],
+    category: "Tricot Metalizado",
+    description: "Tamanho: U",
+    sku: "860",
+    inStock: true
+  }, 
+  {
+    id: 866,
+    name: "Tricot Metalizado Cobre Tamanho: U",
+    price: 156.25,
+    images: [
+      "/images/tricotmetalizado/fiometalizadocobre.jpg",
+      "/images/tricotmetalizado/fiometalizadocobre1.jpg",
+    ],
+    category: "Tricot Metalizado",
+    description: "Tamanho: U",
+    sku: "860",
+    inStock: true
+  }, 
   
   
   
