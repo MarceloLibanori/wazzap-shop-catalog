@@ -743,10 +743,80 @@ const tricotHotFixProducts: Product[] = [
   
   
 ];
+const tricotmetalizadoProducts: Product[] = [
+  {
+    id: 860,
+    name: "Tricot Hot Fix Preto Tamanho: U",
+    price: 231.25,
+    images: [
+      "/images/tricothotfix/hotfixpreto.jpg",
+      "/images/tricothotfix/hotfixpreto1.jpg",
+    ],
+    category: "Tricot Hot Fix",
+    description: "Tamanho: U",
+    sku: "222",
+    inStock: true
+  },
+  {
+    id: 861,
+    name: "Tricot Hot Fix Marsala Tamanho: U",
+    price: 231.25,
+    images: [
+      "/images/tricothotfix/hotfixmarsala.jpg",
+      "/images/tricothotfix/hotfixmarsala1.jpg",
+    ],
+    category: "Tricot Hot Fix",
+    description: "Tamanho: U",
+    sku: "222",
+    inStock: true
+  },
+  {
+    id: 862,
+    name: "Tricot Hot Fix Off White Tamanho: U",
+    price: 231.25,
+    images: [
+      "/images/tricothotfix/hotfixoffwhite.jpg",
+      "/images/tricothotfix/hotfixoffwhite1.jpg",
+    ],
+    category: "Tricot Hot Fix",
+    description: "Tamanho: U",
+    sku: "222",
+    inStock: true
+  }, 
+  {
+    id: 863,
+    name: "Tricot Hot Fix Cinza Tamanho: U",
+    price: 231.25,
+    images: [
+      "/images/tricothotfix/hotfixcinza.jpg",
+      "/images/tricothotfix/hotfixcinza1.jpg",
+    ],
+    category: "Tricot Hot Fix",
+    description: "Tamanho: U",
+    sku: "222",
+    inStock: true
+  },
+  {
+    id: 864,
+    name: "Tricot Hot Fix Mooca Tamanho: U",
+    price: 231.25,
+    images: [
+      "/images/tricothotfix/hotfixmooca1.jpg",
+      "/images/tricothotfix/hotfixmooca.jpg",
+    ],
+    category: "Tricot Hot Fix",
+    description: "Tamanho: U",
+    sku: "222",
+    inStock: true
+  },
+  
+  
+];
 
 // Combinando todos os produtos
 export const products: Product[] = [
   ...tuleProducts,
+  ...tricotmetalizadoProducts,
   ...coleteMetalizadoProducts,
   ...top3018Products,
   ...tricotHotFixProducts,
