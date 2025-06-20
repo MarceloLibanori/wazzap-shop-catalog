@@ -301,6 +301,19 @@ export const products: Product[] = [
   },
   {
     id: 23,
+    name: "Top Verão 3018 Lima Tamanho: P",
+    price: 56.25,
+    images: [
+      "/images/top/toplima3018.jpg",
+      "/images/top/toplima30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: P",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 23,
     name: "Top Verão 3018 Lima Tamanho: M",
     price: 56.25,
     images: [
@@ -322,6 +335,19 @@ export const products: Product[] = [
     ],
     category: "Top 3018",
     description: "Tamanho: G",
+    sku: "3018",
+    inStock: true
+  },
+  {
+    id: 24,
+    name: "Top Verão 3018 Lima Tamanho: GG",
+    price: 56.25,
+    images: [
+      "/images/top/toplima3018.jpg",
+      "/images/top/toplima30181.jpg",
+    ],
+    category: "Top 3018",
+    description: "Tamanho: GG",
     sku: "3018",
     inStock: true
   },
