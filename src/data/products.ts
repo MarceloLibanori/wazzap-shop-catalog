@@ -886,7 +886,7 @@ const tricotmetalizadoProducts: Product[] = [
     ],
     category: "Tricot Metalizado",
     description: "Tamanho: U",
-    sku: "222",
+    sku: "860",
     inStock: true
   },
   {
@@ -899,7 +899,7 @@ const tricotmetalizadoProducts: Product[] = [
     ],
     category: "Tricot Metalizado",
     description: "Tamanho: U",
-    sku: "222",
+    sku: "860",
     inStock: true
   }, 
   {
@@ -912,7 +912,20 @@ const tricotmetalizadoProducts: Product[] = [
     ],
     category: "Tricot Metalizado",
     description: "Tamanho: U",
-    sku: "222",
+    sku: "860",
+    inStock: true
+  }, 
+  {
+    id: 864,
+    name: "Tricot Metalizado Caramelo Tamanho: U",
+    price: 156.25,
+    images: [
+      "/images/tricotmetalizado/fiometalizadocaramelo1.jpg",
+      "/images/tricotmetalizado/fiometalizadocaramelo.jpg",
+    ],
+    category: "Tricot Metalizado",
+    description: "Tamanho: U",
+    sku: "860",
     inStock: true
   }, 
   
