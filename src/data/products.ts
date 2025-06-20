@@ -865,24 +865,24 @@ const tricotHotFixProducts: Product[] = [
 const tricotmetalizadoProducts: Product[] = [
   {
     id: 860,
-    name: "Tricot Hot Fix Preto Tamanho: U",
-    price: 231.25,
+    name: "Tricot Metalizado Marrom Tamanho: U",
+    price: 156.25,
     images: [
-      "/images/tricothotfix/hotfixpreto.jpg",
-      "/images/tricothotfix/hotfixpreto1.jpg",
+      "/images/tricotmetalizado/fiometalizadomarrom1.jpg",
+      "/images/tricotmetalizado/fiometalizadomarrom.jpg",
     ],
     category: "Tricot Metalizado",
     description: "Tamanho: U",
-    sku: "222",
+    sku: "860",
     inStock: true
   },
   {
     id: 861,
-    name: "Tricot Hot Fix Marsala Tamanho: U",
-    price: 231.25,
+    name: "Tricot Metalizado Azul Marinho Tamanho: U",
+    price: 156.25,
     images: [
-      "/images/tricothotfix/hotfixmarsala.jpg",
-      "/images/tricothotfix/hotfixmarsala1.jpg",
+      "/images/tricotmetalizado/fiometalizadoazulmarinho.jpg",
+      "/images/tricotmetalizado/fiometalizadoazulmarinho1.jpg",
     ],
     category: "Tricot Metalizado",
     description: "Tamanho: U",
@@ -891,43 +891,32 @@ const tricotmetalizadoProducts: Product[] = [
   },
   {
     id: 862,
-    name: "Tricot Hot Fix Off White Tamanho: U",
-    price: 231.25,
+    name: "Tricot Metalizado Preto Tamanho: U",
+    price: 156.25,
     images: [
-      "/images/tricothotfix/hotfixoffwhite.jpg",
-      "/images/tricothotfix/hotfixoffwhite1.jpg",
+      "/images/tricotmetalizado/fiometalizadopreto.jpg",
+      "/images/tricotmetalizado/fiometalizadopreto1.jpg",
     ],
-    category: "Tricot Hot Fix",
+    category: "Tricot Metalizado",
     description: "Tamanho: U",
     sku: "222",
     inStock: true
   }, 
   {
     id: 863,
-    name: "Tricot Hot Fix Cinza Tamanho: U",
-    price: 231.25,
+    name: "Tricot Metalizado Preto com Prata Tamanho: U",
+    price: 156.25,
     images: [
-      "/images/tricothotfix/hotfixcinza.jpg",
-      "/images/tricothotfix/hotfixcinza1.jpg",
+      "/images/tricotmetalizado/fiometalizadopretocprata1.JPG",
+      "/images/tricotmetalizado/fiometalizadopretocprata.JPG",
     ],
     category: "Tricot Metalizado",
     description: "Tamanho: U",
     sku: "222",
     inStock: true
-  },
-  {
-    id: 864,
-    name: "Tricot Hot Fix Mooca Tamanho: U",
-    price: 231.25,
-    images: [
-      "/images/tricothotfix/hotfixmooca1.jpg",
-      "/images/tricothotfix/hotfixmooca.jpg",
-    ],
-    category: "Tricot Metalizado",
-    description: "Tamanho: U",
-    sku: "222",
-    inStock: true
-  },
+  }, 
+  
+  
   
   
 ];
