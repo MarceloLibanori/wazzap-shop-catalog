@@ -556,7 +556,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 85,
+    id: 86,
     name: "Top Verão 3018 Marsala Tamanho: G",
     price: 56.25,
     images: [
@@ -569,7 +569,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 86,
+    id: 87,
     name: "Top Verão 3018 Marsala Tamanho: GG",
     price: 56.25,
     images: [
@@ -582,7 +582,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 87,
+    id: 88,
     name: "Top Verão 3018 Pink Tamanho: P",
     price: 56.25,
     images: [
@@ -595,7 +595,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 88,
+    id: 89,
     name: "Top Verão 3018 Pink Tamanho: M",
     price: 56.25,
     images: [
@@ -608,7 +608,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 89,
+    id: 90,
     name: "Top Verão 3018 Pink Tamanho: G",
     price: 56.25,
     images: [
@@ -621,7 +621,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 90,
+    id: 91,
     name: "Top Verão 3018 Pink Tamanho: GG",
     price: 56.25,
     images: [
@@ -635,7 +635,7 @@ const top3018Products: Product[] = [
   },
   
   {
-    id: 91,
+    id: 92,
     name: "Top Verão 3018 Branco Tamanho: P",
     price: 56.25,
     images: [
@@ -648,7 +648,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 92,
+    id: 93,
     name: "Top Verão 3018 Branco Tamanho: M",
     price: 56.25,
     images: [
@@ -661,7 +661,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 93,
+    id: 94,
     name: "Top Verão 3018 Branco Tamanho: G",
     price: 56.25,
     images: [
@@ -674,7 +674,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 94,
+    id: 95,
     name: "Top Verão 3018 Branco Tamanho: GG",
     price: 56.25,
     images: [
@@ -687,7 +687,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 95,
+    id: 96,
     name: "Top Verão 3018 Pessego Tamanho: P",
     price: 56.25,
     images: [
@@ -700,7 +700,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 96,
+    id: 97,
     name: "Top Verão 3018 Pessego Tamanho: M",
     price: 56.25,
     images: [
@@ -713,7 +713,7 @@ const top3018Products: Product[] = [
     inStock: false
   },
   {
-    id: 97,
+    id: 98,
     name: "Top Verão 3018 Pessego Tamanho: G",
     price: 56.25,
     images: [
@@ -726,7 +726,7 @@ const top3018Products: Product[] = [
     inStock: false
   },
   {
-    id: 98,
+    id: 99,
     name: "Top Verão 3018 Pessego Tamanho: GG",
     price: 56.25,
     images: [
@@ -739,7 +739,7 @@ const top3018Products: Product[] = [
     inStock: false
   },
   {
-    id: 99,
+    id: 100,
     name: "Top Verão 3018 Coral Tamanho: P",
     price: 56.25,
     images: [
@@ -752,7 +752,7 @@ const top3018Products: Product[] = [
     inStock: true
   },
   {
-    id: 100,
+    id: 101,
     name: "Top Verão 3018 Coral Tamanho: M",
     price: 56.25,
     images: [
@@ -765,7 +765,7 @@ const top3018Products: Product[] = [
     inStock: false
   },
   {
-    id: 101,
+    id: 102,
     name: "Top Verão 3018 Coral Tamanho: G",
     price: 56.25,
     images: [
@@ -778,7 +778,7 @@ const top3018Products: Product[] = [
     inStock: false
   },
   {
-    id: 102,
+    id: 103,
     name: "Top Verão 3018 Coral Tamanho: GG",
     price: 56.25,
     images: [
@@ -871,7 +871,7 @@ const tricotmetalizadoProducts: Product[] = [
       "/images/tricothotfix/hotfixpreto.jpg",
       "/images/tricothotfix/hotfixpreto1.jpg",
     ],
-    category: "Tricot Hot Fix",
+    category: "Tricot Metalizado",
     description: "Tamanho: U",
     sku: "222",
     inStock: true
@@ -884,7 +884,7 @@ const tricotmetalizadoProducts: Product[] = [
       "/images/tricothotfix/hotfixmarsala.jpg",
       "/images/tricothotfix/hotfixmarsala1.jpg",
     ],
-    category: "Tricot Hot Fix",
+    category: "Tricot Metalizado",
     description: "Tamanho: U",
     sku: "222",
     inStock: true
@@ -910,7 +910,7 @@ const tricotmetalizadoProducts: Product[] = [
       "/images/tricothotfix/hotfixcinza.jpg",
       "/images/tricothotfix/hotfixcinza1.jpg",
     ],
-    category: "Tricot Hot Fix",
+    category: "Tricot Metalizado",
     description: "Tamanho: U",
     sku: "222",
     inStock: true
@@ -923,7 +923,7 @@ const tricotmetalizadoProducts: Product[] = [
       "/images/tricothotfix/hotfixmooca1.jpg",
       "/images/tricothotfix/hotfixmooca.jpg",
     ],
-    category: "Tricot Hot Fix",
+    category: "Tricot Metalizado",
     description: "Tamanho: U",
     sku: "222",
     inStock: true
