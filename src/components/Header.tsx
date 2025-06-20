@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Search, ShoppingCart, Settings } from 'lucide-react';
+import { Search, ShoppingCart } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -58,20 +58,8 @@ const Header = ({ onSearch }: HeaderProps) => {
             </div>
           </form>
 
-          {/* Actions */}
+          {/* Cart */}
           <div className="flex items-center space-x-3">
-            {/* Admin Link */}
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => window.location.href = '/admin/products'}
-              className="text-gray-600 hover:text-gray-900"
-            >
-              <Settings className="h-4 w-4 mr-2" />
-              Admin
-            </Button>
-
-            {/* Cart */}
             <Button variant="ghost" size="sm" className="relative">
               <ShoppingCart className="h-5 w-5" />
               {totalQuantity > 0 && (

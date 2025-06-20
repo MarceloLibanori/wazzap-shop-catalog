@@ -7,11 +7,12 @@ export interface Product {
   images: string[];
   category: string;
   description: string;
-  sku: string; // Adicionado
+  sku: string;
   inStock: boolean;
 }
 
-export const products: Product[] = [
+// ===== CATEGORIA: TULE =====
+const tuleProducts: Product[] = [
   {
     id: 1,
     name: "Tule Devore Animal Print Preto c/Nude Tamanho: P",
@@ -22,7 +23,7 @@ export const products: Product[] = [
     ],
     category: "Tule",
     description: "Tamanho: P",
-    sku: "1300", // Adicionado SKU
+    sku: "1300",
     inStock: true
   },
   {
@@ -116,6 +117,10 @@ export const products: Product[] = [
     sku: "1300",
     inStock: true
   },
+];
+
+// ===== CATEGORIA: COLETE METALIZADO =====
+const coleteMetalizadoProducts: Product[] = [
   {
     id: 9,
     name: "Colete Metalizado Bordo Tamanho: U",
@@ -194,7 +199,10 @@ export const products: Product[] = [
     sku: "821",
     inStock: true
   },
-  //  INICIO TOP 3018
+];
+
+// ===== CATEGORIA: TOP 3018 =====
+const top3018Products: Product[] = [
   {
     id: 15,
     name: "Top Verão 3018 Preto Tamanho: P",
@@ -313,7 +321,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 23,
+    id: 24,
     name: "Top Verão 3018 Lima Tamanho: M",
     price: 56.25,
     images: [
@@ -326,7 +334,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 24,
+    id: 25,
     name: "Top Verão 3018 Lima Tamanho: G",
     price: 56.25,
     images: [
@@ -339,7 +347,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 25,
+    id: 26,
     name: "Top Verão 3018 Lima Tamanho: GG",
     price: 56.25,
     images: [
@@ -352,7 +360,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 25,
+    id: 27,
     name: "Top Verão 3018 Verde Militar Tamanho: P",
     price: 56.25,
     images: [
@@ -365,7 +373,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 26,
+    id: 28,
     name: "Top Verão 3018 Verde Militar Tamanho: M",
     price: 56.25,
     images: [
@@ -378,7 +386,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 27,
+    id: 29,
     name: "Top Verão 3018 Verde Militar Tamanho: G",
     price: 56.25,
     images: [
@@ -391,7 +399,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 28,
+    id: 30,
     name: "Top Verão 3018 Verde Militar Tamanho: GG",
     price: 56.25,
     images: [
@@ -404,7 +412,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 29,
+    id: 31,
     name: "Top Verão 3018 Tiffany Tamanho: M",
     price: 56.25,
     images: [
@@ -417,7 +425,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 30,
+    id: 32,
     name: "Top Verão 3018 Tiffany Tamanho: G",
     price: 56.25,
     images: [
@@ -430,7 +438,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 31,
+    id: 33,
     name: "Top Verão 3018 Chumbo Tamanho: P",
     price: 56.25,
     images: [
@@ -443,7 +451,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 32,
+    id: 34,
     name: "Top Verão 3018 Chumbo Tamanho: M",
     price: 56.25,
     images: [
@@ -456,7 +464,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 33,
+    id: 35,
     name: "Top Verão 3018 Chumbo Tamanho: G",
     price: 56.25,
     images: [
@@ -469,7 +477,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 34,
+    id: 36,
     name: "Top Verão 3018 Chumbo Tamanho: GG",
     price: 56.25,
     images: [
@@ -482,7 +490,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 35,
+    id: 37,
     name: "Top Verão 3018 Marsala Tamanho: P",
     price: 56.25,
     images: [
@@ -495,7 +503,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 36,
+    id: 38,
     name: "Top Verão 3018 Marsala Tamanho: M",
     price: 56.25,
     images: [
@@ -508,7 +516,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 37,
+    id: 39,
     name: "Top Verão 3018 Marsala Tamanho: G",
     price: 56.25,
     images: [
@@ -521,7 +529,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 38,
+    id: 40,
     name: "Top Verão 3018 Marsala Tamanho: GG",
     price: 56.25,
     images: [
@@ -534,7 +542,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 39,
+    id: 41,
     name: "Top Verão 3018 Pink Tamanho: P",
     price: 56.25,
     images: [
@@ -547,7 +555,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 40,
+    id: 42,
     name: "Top Verão 3018 Pink Tamanho: M",
     price: 56.25,
     images: [
@@ -560,7 +568,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 41,
+    id: 43,
     name: "Top Verão 3018 Pink Tamanho: G",
     price: 56.25,
     images: [
@@ -573,7 +581,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 42,
+    id: 44,
     name: "Top Verão 3018 Pink Tamanho: GG",
     price: 56.25,
     images: [
@@ -586,7 +594,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 43,
+    id: 45,
     name: "Top Verão 3018 Coral Tamanho: P",
     price: 56.25,
     images: [
@@ -599,7 +607,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 44,
+    id: 46,
     name: "Top Verão 3018 Branco Tamanho: P",
     price: 56.25,
     images: [
@@ -612,7 +620,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 45,
+    id: 47,
     name: "Top Verão 3018 Branco Tamanho: M",
     price: 56.25,
     images: [
@@ -625,7 +633,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 46,
+    id: 48,
     name: "Top Verão 3018 Branco Tamanho: G",
     price: 56.25,
     images: [
@@ -638,7 +646,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 47,
+    id: 49,
     name: "Top Verão 3018 Branco Tamanho: GG",
     price: 56.25,
     images: [
@@ -651,7 +659,7 @@ export const products: Product[] = [
     inStock: true
   },
   {
-    id: 48,
+    id: 50,
     name: "Top Verão 3018 Pessego Tamanho: P",
     price: 56.25,
     images: [
@@ -663,9 +671,12 @@ export const products: Product[] = [
     sku: "3018",
     inStock: true
   },
-//  INICIO TRICO HOT FIX
+];
+
+// ===== CATEGORIA: TRICOT HOT FIX =====
+const tricotHotFixProducts: Product[] = [
   {
-    id: 49,
+    id: 51,
     name: "Tricot Hot Fix Preto Tamanho: U",
     price: 231.25,
     images: [
@@ -679,3 +690,10 @@ export const products: Product[] = [
   },
 ];
 
+// Combinando todos os produtos
+export const products: Product[] = [
+  ...tuleProducts,
+  ...coleteMetalizadoProducts,
+  ...top3018Products,
+  ...tricotHotFixProducts,
+];
