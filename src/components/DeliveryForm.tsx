@@ -78,15 +78,7 @@ const DeliveryForm = ({ onDeliveryChange }: DeliveryFormProps) => {
             />
           </div>
 
-          <div>
-            <Label htmlFor="phone">Telefone</Label>
-            <Input
-              id="phone"
-              placeholder="(11) 99999-9999"
-              value={deliveryData.phone}
-              onChange={(e) => handleInputChange('phone', e.target.value)}
-            />
-          </div>
+          
 
           <div>
             <Label htmlFor="address">Endereço completo</Label>
