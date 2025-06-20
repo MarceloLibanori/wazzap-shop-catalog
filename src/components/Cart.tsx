@@ -1,11 +1,11 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Plus, Minus, ShoppingCart, MessageCircle, FileText } from 'lucide-react';
 import { generateOrderPDF } from '@/utils/pdfGenerator';
 import { toast } from '@/components/ui/use-toast';
+import DeliveryForm, { DeliveryData } from './DeliveryForm';
 
 // Função auxiliar para formatar valores em Real
 const formatPrice = (price: number): string => {
@@ -25,13 +25,45 @@ const Cart = () => {
     setIsOpen,
   } = useCart();
 
+  const [deliveryData, setDeliveryData] = useState<DeliveryData>({
+    name: '',
+    address: '',
+    city: '',
+    zipCode: '',
+    phone: '',
+    shippingMethod: 'onibus'
+  });
+
   const totalItems = getTotalQuantity();
   const temDesconto = totalItems >= 3;
   const totalOriginal = getTotalPrice();
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
+  const getShippingPrice = () => {
+    const prices = {
+      onibus: 15,
+      correio: 25,
+      transportadora: 35
+    };
+    return prices[deliveryData.shippingMethod];
+  };
+
+  const getTotalWithShipping = () => {
+    return totalComDesconto + getShippingPrice();
+  };
+
   const handleWhatsAppOrder = () => {
     if (items.length === 0) return;
+
+    // Validar dados de entrega
+    if (!deliveryData.name || !deliveryData.address || !deliveryData.city || !deliveryData.phone) {
+      toast({
+        title: "Dados incompletos",
+        description: "Por favor, preencha todos os dados de entrega.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     let message = "🛒 *Meu Pedido:*\n\n";
 
@@ -51,17 +83,25 @@ const Cart = () => {
       message += "──────────────────────\n";
     });
 
-    message += `\n💰 *Total sem desconto:* ${formatPrice(totalOriginal)}\n`;
+    message += `\n💰 *Subtotal produtos:* ${formatPrice(totalComDesconto)}\n`;
+    message += `🚚 *Frete (${deliveryData.shippingMethod}):* ${formatPrice(getShippingPrice())}\n`;
+    message += `💳 *Total final:* ${formatPrice(getTotalWithShipping())}\n`;
 
     if (temDesconto) {
-      message += `🎉 *Com desconto (20%):* ${formatPrice(totalComDesconto)}\n`;
-      message += "__________________________\n";
       message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
 
+    message += "\n📦 *Dados para entrega:*\n";
+    message += `👤 Nome: ${deliveryData.name}\n`;
+    message += `📱 Telefone: ${deliveryData.phone}\n`;
+    message += `📍 Endereço: ${deliveryData.address}\n`;
+    message += `🏙️ Cidade: ${deliveryData.city}\n`;
+    message += `📮 CEP: ${deliveryData.zipCode}\n`;
+    message += `🚛 Forma de entrega: ${deliveryData.shippingMethod}\n`;
+
     message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    const phoneNumber = "5511947537240"; // substitua pelo número correto
+    const phoneNumber = "5511947537240";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -82,7 +122,10 @@ const Cart = () => {
         totalOriginal,
         totalComDesconto,
         temDesconto,
-        totalQuantity: totalItems
+        totalQuantity: totalItems,
+        deliveryData,
+        shippingPrice: getShippingPrice(),
+        totalWithShipping: getTotalWithShipping()
       });
       
       toast({
@@ -210,6 +253,9 @@ const Cart = () => {
                     Compre mais {3 - totalItems} unidade(s) e ganhe 20% de desconto!
                   </div>
                 )}
+
+                {/* Formulário de entrega */}
+                <DeliveryForm onDeliveryChange={setDeliveryData} />
               </div>
             )}
           </div>
@@ -217,24 +263,29 @@ const Cart = () => {
           {/* Rodapé com total e botões */}
           {items.length > 0 && (
             <div className="border-t p-4 space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-lg font-semibold">Total:</span>
-                <span className="text-2xl font-bold text-whatsapp-600">
-                  {formatPrice(totalComDesconto)}
-                </span>
+              <div className="space-y-1">
+                <div className="flex justify-between text-sm">
+                  <span>Subtotal produtos:</span>
+                  <span>{formatPrice(totalComDesconto)}</span>
+                </div>
+                
+                <div className="flex justify-between text-sm">
+                  <span>Frete ({deliveryData.shippingMethod}):</span>
+                  <span>{formatPrice(getShippingPrice())}</span>
+                </div>
+                
+                <div className="flex justify-between items-center border-t pt-2">
+                  <span className="text-lg font-semibold">Total:</span>
+                  <span className="text-2xl font-bold text-whatsapp-600">
+                    {formatPrice(getTotalWithShipping())}
+                  </span>
+                </div>
               </div>
 
               {temDesconto && (
-                <>
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Subtotal:</span>
-                    <span>{formatPrice(totalOriginal)}</span>
-                  </div>
-                  <div className="flex justify-between text-green-600 font-medium">
-                    <span>Com desconto (20%):</span>
-                    <span>{formatPrice(totalComDesconto)}</span>
-                  </div>
-                </>
+                <div className="text-sm text-green-600 font-medium">
+                  🎉 Desconto de 20% aplicado nos produtos!
+                </div>
               )}
 
               <div className="space-y-2">
