@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { generateOrderPDF } from '@/utils/pdfGenerator';
@@ -155,7 +156,7 @@ const Cart = () => {
     <div className="fixed inset-0 z-50 overflow-hidden">
       <div className="absolute inset-0 bg-black/50" onClick={() => setIsOpen(false)}></div>
 
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
+      <div className="fixed right-0 top-0 h-full w-full sm:max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
         <div className="flex flex-col h-full">
           <CartHeader 
             itemCount={items.length}
@@ -163,23 +164,25 @@ const Cart = () => {
             onClose={() => setIsOpen(false)}
           />
 
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-y-auto p-2 sm:p-4">
             {items.length === 0 ? (
               <EmptyCart />
             ) : (
-              <div className="space-y-4">
-                {items.map((item) => (
-                  <CartItem
-                    key={item.id}
-                    item={item}
-                    temDesconto={temDesconto}
-                    onUpdateQuantity={updateQuantity}
-                    onRemoveItem={removeItem}
-                  />
-                ))}
+              <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-2 sm:space-y-3">
+                  {items.map((item) => (
+                    <CartItem
+                      key={item.id}
+                      item={item}
+                      temDesconto={temDesconto}
+                      onUpdateQuantity={updateQuantity}
+                      onRemoveItem={removeItem}
+                    />
+                  ))}
+                </div>
 
                 {totalItems > 0 && totalItems < 3 && (
-                  <div className="mt-4 text-sm text-yellow-600">
+                  <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-yellow-600 px-2">
                     Compre mais {3 - totalItems} unidade(s) e ganhe 20% de desconto!
                   </div>
                 )}
@@ -193,14 +196,14 @@ const Cart = () => {
           </div>
 
           {items.length > 0 && (
-            <div className="border-t p-4">
+            <div className="border-t p-2 sm:p-4">
               <CartSummary
                 totalOriginal={totalOriginal}
                 totalComDesconto={totalComDesconto}
                 temDesconto={temDesconto}
               />
               
-              <div className="mt-4">
+              <div className="mt-3 sm:mt-4">
                 <CartActions
                   onWhatsAppOrder={handleWhatsAppOrder}
                   onGeneratePDF={handleGeneratePDF}
