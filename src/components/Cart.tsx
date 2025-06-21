@@ -1,11 +1,11 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Plus, Minus, ShoppingCart, MessageCircle, FileText } from 'lucide-react';
 import { generateOrderPDF } from '@/utils/pdfGenerator';
 import { toast } from '@/components/ui/use-toast';
+import DeliveryForm from './DeliveryForm';
 
 // Função auxiliar para formatar valores em Real
 const formatPrice = (price: number): string => {
@@ -25,13 +25,40 @@ const Cart = () => {
     setIsOpen,
   } = useCart();
 
+  const [deliveryData, setDeliveryData] = useState({
+    nome: '',
+    telefone: '',
+    endereco: '',
+    cidade: '',
+    cep: '',
+    frete: ''
+  });
+
   const totalItems = getTotalQuantity();
   const temDesconto = totalItems >= 3;
   const totalOriginal = getTotalPrice();
   const totalComDesconto = temDesconto ? getTotalPriceWithDiscount() : totalOriginal;
 
+  const isDeliveryDataValid = () => {
+    return deliveryData.nome && 
+           deliveryData.telefone && 
+           deliveryData.endereco && 
+           deliveryData.cidade && 
+           deliveryData.cep && 
+           deliveryData.frete;
+  };
+
   const handleWhatsAppOrder = () => {
     if (items.length === 0) return;
+
+    if (!isDeliveryDataValid()) {
+      toast({
+        title: "Dados incompletos",
+        description: "Por favor, preencha todos os dados de entrega.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     let message = "🛒 *Meu Pedido:*\n\n";
 
@@ -59,9 +86,24 @@ const Cart = () => {
       message += "\n🎁 Parabéns! Você ganhou 20% de desconto por comprar mais de 3 unidades.\n";
     }
 
+    message += "\n📦 *Dados para Entrega:*\n";
+    message += `👤 Nome: ${deliveryData.nome}\n`;
+    message += `📱 Telefone: ${deliveryData.telefone}\n`;
+    message += `📍 Endereço: ${deliveryData.endereco}\n`;
+    message += `🏙️ Cidade: ${deliveryData.cidade}\n`;
+    message += `📮 CEP: ${deliveryData.cep}\n`;
+    
+    const freteLabel = {
+      onibus: 'Ônibus',
+      correio: 'Correio',
+      transportadora: 'Transportadora'
+    }[deliveryData.frete] || deliveryData.frete;
+    
+    message += `🚚 Frete: ${freteLabel} (consultar valor)\n`;
+
     message += "\n📞 Gostaria de finalizar este pedido!\nObrigado 😊";
 
-    const phoneNumber = "5511947537240"; // substitua pelo número correto
+    const phoneNumber = "5511947537240";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -76,13 +118,23 @@ const Cart = () => {
       return;
     }
 
+    if (!isDeliveryDataValid()) {
+      toast({
+        title: "Dados incompletos",
+        description: "Por favor, preencha todos os dados de entrega antes de gerar o PDF.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       const fileName = generateOrderPDF({
         items,
         totalOriginal,
         totalComDesconto,
         temDesconto,
-        totalQuantity: totalItems
+        totalQuantity: totalItems,
+        deliveryData
       });
       
       toast({

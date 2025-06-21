@@ -7,6 +7,14 @@ interface GeneratePDFProps {
   totalComDesconto: number;
   temDesconto: boolean;
   totalQuantity: number;
+  deliveryData?: {
+    nome: string;
+    telefone: string;
+    endereco: string;
+    cidade: string;
+    cep: string;
+    frete: string;
+  };
 }
 
 const formatPrice = (price: number): string => `R$ ${price.toFixed(2).replace('.', ',')}`;
@@ -16,7 +24,8 @@ export const generateOrderPDF = ({
   totalOriginal,
   totalComDesconto,
   temDesconto,
-  totalQuantity
+  totalQuantity,
+  deliveryData
 }: GeneratePDFProps) => {
   const doc = new jsPDF();
   const now = new Date();
@@ -63,6 +72,34 @@ export const generateOrderPDF = ({
   y += 10;
   addLineSeparator(y);
   y += 10;
+
+  // Dados de entrega (se fornecidos)
+  if (deliveryData) {
+    addText('Dados para Entrega', marginX, y, 14, true);
+    y += 8;
+    
+    addText(`Nome: ${deliveryData.nome}`, marginX, y, 11);
+    y += 6;
+    addText(`Telefone: ${deliveryData.telefone}`, marginX, y, 11);
+    y += 6;
+    addText(`Endereço: ${deliveryData.endereco}`, marginX, y, 11);
+    y += 6;
+    addText(`Cidade: ${deliveryData.cidade}`, marginX, y, 11);
+    y += 6;
+    addText(`CEP: ${deliveryData.cep}`, marginX, y, 11);
+    y += 6;
+    
+    const freteLabel = {
+      onibus: 'Ônibus',
+      correio: 'Correio',
+      transportadora: 'Transportadora'
+    }[deliveryData.frete] || deliveryData.frete;
+    
+    addText(`Frete: ${freteLabel} (consultar valor)`, marginX, y, 11);
+    y += 10;
+    addLineSeparator(y);
+    y += 10;
+  }
 
   // Itens
   addText('Itens do Pedido', marginX, y, 14, true);
