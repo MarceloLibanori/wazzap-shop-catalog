@@ -9,7 +9,6 @@ interface GeneratePDFProps {
   totalQuantity: number;
   deliveryData?: {
     nome: string;
-    telefone: string;
     endereco: string;
     cidade: string;
     cep: string;
@@ -79,8 +78,6 @@ export const generateOrderPDF = ({
     y += 8;
     
     addText(`Nome: ${deliveryData.nome}`, marginX, y, 11);
-    y += 6;
-    addText(`Telefone: ${deliveryData.telefone}`, marginX, y, 11);
     y += 6;
     addText(`Endereço: ${deliveryData.endereco}`, marginX, y, 11);
     y += 6;

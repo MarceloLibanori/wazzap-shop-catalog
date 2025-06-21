@@ -7,7 +7,6 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 interface DeliveryFormProps {
   deliveryData: {
     nome: string;
-    telefone: string;
     endereco: string;
     cidade: string;
     cep: string;
@@ -19,6 +18,24 @@ interface DeliveryFormProps {
 const DeliveryForm = ({ deliveryData, onDeliveryDataChange }: DeliveryFormProps) => {
   const handleInputChange = (field: string, value: string) => {
     onDeliveryDataChange({ ...deliveryData, [field]: value });
+  };
+
+  const handleCepChange = async (cep: string) => {
+    const cleanCep = cep.replace(/\D/g, '');
+    handleInputChange('cep', cep);
+    
+    if (cleanCep.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+        const data = await response.json();
+        
+        if (!data.erro) {
+          handleInputChange('cidade', data.localidade);
+        }
+      } catch (error) {
+        console.log('Erro ao consultar CEP:', error);
+      }
+    }
   };
 
   return (
@@ -37,16 +54,6 @@ const DeliveryForm = ({ deliveryData, onDeliveryDataChange }: DeliveryFormProps)
         </div>
 
         <div>
-          <Label htmlFor="telefone">Telefone</Label>
-          <Input
-            id="telefone"
-            value={deliveryData.telefone}
-            onChange={(e) => handleInputChange('telefone', e.target.value)}
-            placeholder="(11) 99999-9999"
-          />
-        </div>
-
-        <div>
           <Label htmlFor="endereco">Endereço Completo</Label>
           <Input
             id="endereco"
@@ -58,22 +65,24 @@ const DeliveryForm = ({ deliveryData, onDeliveryDataChange }: DeliveryFormProps)
 
         <div className="grid grid-cols-2 gap-3">
           <div>
+            <Label htmlFor="cep">CEP</Label>
+            <Input
+              id="cep"
+              value={deliveryData.cep}
+              onChange={(e) => handleCepChange(e.target.value)}
+              placeholder="00000-000"
+              maxLength={9}
+            />
+          </div>
+
+          <div>
             <Label htmlFor="cidade">Cidade</Label>
             <Input
               id="cidade"
               value={deliveryData.cidade}
               onChange={(e) => handleInputChange('cidade', e.target.value)}
-              placeholder="Sua cidade"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="cep">CEP</Label>
-            <Input
-              id="cep"
-              value={deliveryData.cep}
-              onChange={(e) => handleInputChange('cep', e.target.value)}
-              placeholder="00000-000"
+              placeholder="Cidade será preenchida automaticamente"
+              className="bg-gray-100"
             />
           </div>
         </div>

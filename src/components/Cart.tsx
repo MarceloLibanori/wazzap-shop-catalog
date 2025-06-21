@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { generateOrderPDF } from '@/utils/pdfGenerator';
@@ -29,7 +28,6 @@ const Cart = () => {
 
   const [deliveryData, setDeliveryData] = useState({
     nome: '',
-    telefone: '',
     endereco: '',
     cidade: '',
     cep: '',
@@ -43,7 +41,6 @@ const Cart = () => {
 
   const isDeliveryDataValid = () => {
     return deliveryData.nome && 
-           deliveryData.telefone && 
            deliveryData.endereco && 
            deliveryData.cidade && 
            deliveryData.cep && 
@@ -90,7 +87,6 @@ const Cart = () => {
 
     message += "\n📦 *Dados para Entrega:*\n";
     message += `👤 Nome: ${deliveryData.nome}\n`;
-    message += `📱 Telefone: ${deliveryData.telefone}\n`;
     message += `📍 Endereço: ${deliveryData.endereco}\n`;
     message += `🏙️ Cidade: ${deliveryData.cidade}\n`;
     message += `📮 CEP: ${deliveryData.cep}\n`;
